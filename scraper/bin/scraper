@@ -2,6 +2,6 @@
 
 require 'scraper'
 
-data = Scraper.new("https://coinbase.com/").call
+data = Scraper::Scrape.new("https://coinbase.com/").call
 
-puts data
+puts data.data
