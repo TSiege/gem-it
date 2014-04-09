@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'bit_price'
+
+data = BitPrice::Magic.new("https://coinbase.com/").call
+
+puts data.data
+
