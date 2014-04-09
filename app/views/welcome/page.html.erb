@@ -1,0 +1,65 @@
+<h1>Gemify</h1>
+
+
+<%= form_tag create_gem_path do %>
+  <%= label_tag :data %>
+  <%= text_field_tag :data, :id => "text" %>
+  <%= hidden_field_tag :data, :id => "path" %>
+<% end %>
+<h2 id="text">Text</h2> 
+<h2 id="path">Path</h2> 
+
+
+
+<iframe onload="addListenersToIframe()" class="website" src="<%= remove_public(@file.path) %>" height="800">
+</iframe>
+
+
+
+
+<script>
+
+$("document").ready(function() {
+
+
+});
+
+var path = $("#path");
+var text = $("#text");
+
+function addListenersToIframe() {
+  $("iframe").contents().find("html").each(function() {
+    $(this).bind("click", function(e) { 
+      e.preventDefault();
+      var t = e.target.innerHTML;
+      var p = getPathTo(e.target)
+      text.text(t);
+      path.text(p);
+    });
+  });
+}
+
+
+// check the element
+// if it has an id 
+
+function getPathTo(element) {
+    if (element.id!=='')
+        return 'id("'+element.id+'")';
+    if (element===document.body)
+        return element.tagName.toLowerCase();
+
+    var ix= 0;
+    var siblings= element.parentNode.childNodes;
+    for (var i= 0; i<siblings.length; i++) {
+        var sibling= siblings[i];
+        if (sibling===element)
+            return getPathTo(element.parentNode)+'/'+element.tagName.toLowerCase()+'['+(ix+1)+']';
+        if (sibling.nodeType===1 && sibling.tagName===element.tagName)
+            ix++;
+    }
+}
+
+
+
+</script>

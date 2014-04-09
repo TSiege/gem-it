@@ -1,0 +1,35 @@
+
+<%= form_tag create_welcome_path do %>
+  <%= label_tag :website %>
+  <%= text_field_tag :website %>
+  <%= submit_tag %>
+  
+<% end %>
+
+<script>
+
+// $("#fetch").click(function(e) {
+//   e.preventDefault();
+//   e.stopPropagation();
+//   var val = $("#website").val();
+
+//   var iframe = $("<iframe>");
+//   iframe.css("width", "100%");
+//   iframe.attr("sandbox", "");
+//   iframe.height(800);
+//   $("body").append(iframe);
+
+//   iframe.prop('src', val)
+
+// }); 
+
+// var prevent_bust = 0
+// window.onbeforeunload = function() { prevent_bust++ }
+// setInterval(function() {
+//   if (prevent_bust > 0) {
+//   prevent_bust -= 2
+//   window.top.location = 'localhost:3000/welcome/pause'
+// }
+// }, 1)
+
+</script>
