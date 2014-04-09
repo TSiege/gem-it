@@ -4,8 +4,10 @@ class GemifierController < ApplicationController
   end
 
   def create
-    @client = Octokit::Client.new(:access_token => session[:token])
-    @client.create_repo(params["repo_name"])
+    client = Octokit::Client.new(:access_token => session[:token])
+    client.create_repo(params["repo_name"], {description: params[:description], :private => false})
+    reset_session
+    flash[:notice] = "#{params["repo_name"]} was successfully gemified"
   end
 
   def omniauth
