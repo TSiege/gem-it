@@ -1,0 +1,11 @@
+<h1>I HAVE A SESSIONS TOKEN SEEEEEE <%= session[:token] %></h1>
+
+<%= form_tag(gemifier_index_path, method: "post") do %>
+  <%= label_tag(:repo_name, "Repo Name:") %>
+  <%= text_field_tag(:repo_name) %><br>
+  <%= label_tag(:gem_name, "Gem Name:") %>
+  <%= text_field_tag(:gem_name) %><br>
+  <%= label_tag(:description, "Description:") %>
+  <%= text_field_tag(:description) %><br>
+  <%= submit_tag("Gemify") %>
+<% end %>
