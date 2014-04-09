@@ -1,3 +1,5 @@
+require 'tmpdir'
+
 class GemBuilder < ActiveRecord::Base
 
 	def scaffold(name, creator)
