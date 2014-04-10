@@ -1,4 +1,8 @@
-<div id="iframe-container-div">
-  <iframe onload="addListenersToIframe()" class="website" src="<%= remove_public(@file.path) %>" height="800">
-  </iframe>
+<div class="row" id="frame-bg">
+  <div id="iframe-container-div">
+    <iframe onload="addListenersToIframe()" class="website" src="<%= remove_public(@file.path) %>" height="800">
+    </iframe>
+  </div>
+
+   <%= render "gem_form_column" %>
 </div>
