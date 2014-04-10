@@ -5,7 +5,7 @@ class GemifierController < ApplicationController
 
   def create_iframe
     @page = params[:website]
-    @page = "http://#{@page}" if !@page !~ /http/
+    @page = "http://#{@page}" if @page !~ /http/
     @doc = open(@page)
     digest = Digest::MD5.hexdigest(@page)
     @file = File.new("public/tmp/#{digest}.html", 'w')
