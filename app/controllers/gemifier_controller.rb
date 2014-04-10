@@ -30,10 +30,9 @@ class GemifierController < ApplicationController
   def create
 
     client = Octokit::Client.new(:access_token => session[:token])
-    binding.pry
     client.create_repo(params["repo_name"], {description: params[:description], :private => false})
-    @gemifier = Gemifier.new(params[:gem_name], author_name, params['url'], params['path'], params['email'] )
-    @gemifier.scaffold
+    gemifier = Gemifier.new(params[:gem_name], client.user.login, params['url'], params['path'], params['email'], client)
+    gemifier.scaffold
     
     reset_session
     flash[:notice] = "#{params["repo_name"]} was successfully gemified"
