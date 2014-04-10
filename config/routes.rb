@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   post '/iframe' => 'gemifier#create_iframe', as: :create_iframe
 
-  post '/gems' => 'gems#create', as: :create_gem
+  post '/gemifier' => 'gemifier#create', :as => :create_gem
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
