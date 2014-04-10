@@ -14,5 +14,5 @@
 
 
 //= require jquery_ujs
-//= require_iframe
+//= require_tree .
 //= require vendor_javascripts

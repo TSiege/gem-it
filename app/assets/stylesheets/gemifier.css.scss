@@ -8,10 +8,11 @@
   magin-top: 100px;
 }
 
-.footer-bar {
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%
+
+hr {
+  margin: auto;
+  width: 80%;
+  margin-bottom: 20px;
 }
 
 #iframe-container-div {
@@ -26,3 +27,26 @@
 #gemify-logo {
   font-size: 30px;
 }
+
+.row {
+  background: white;
+}
+
+#frame-bg {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  z-index: -1;
+}
+
+.footer-down {
+  -webkit-transform: translateY(400px);
+     -moz-transform: translateY(400px);
+          transform: translateY(400px);
+  -webkit-transition: 1s -webkit-transform;         
+      moz-transition: 1s -webkit-transform;         
+          transition: 1s -webkit-transform;         
+
+}
+
+
