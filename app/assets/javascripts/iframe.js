@@ -1,5 +1,10 @@
 $( document ).ready(function() {
   addListenersToIframe();
+  $('#iframe-and-form').on('click', '#iframe-container-div', function() {
+    if ( $('#info-check').css('visibility') == 'hidden' ) {
+      $('#info-check').css('visibility', 'visible');
+    }
+  })
 });
 
 
