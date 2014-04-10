@@ -8,7 +8,6 @@
   magin-top: 100px;
 }
 
-
 .iframe-absolute {
   position: absolute;
   z-index: -1;
@@ -31,4 +30,12 @@
 
 #info-check {
   visibility: hidden;
+}
+
+#gemify-navbar {
+  position: static !important;
+}
+
+#gemify-logo {
+  font-size: 30px;
 }
