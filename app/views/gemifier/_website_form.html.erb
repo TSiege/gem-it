@@ -1,5 +1,9 @@
-<%= form_tag create_iframe_path do %>
-  <%= label_tag :website %>
-  <%= text_field_tag :website %>
-  <%= submit_tag %>
+<%= form_tag create_iframe_path, role: "form" do %>
+  <div class="form-group">
+    <%= label_tag :website, "Website URL" %>
+    <%= text_field_tag :website, "", :class => "form-control" %>
+  </div>
+  <div class="panel-footer">
+    <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block" %>
+  </div>
 <% end %>

@@ -18,7 +18,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
-
+gem "less-rails"
+gem 'therubyracer'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 # gem 'spring',        group: :development
 
@@ -54,7 +55,6 @@ group :production do
   gem "rails_12factor"
 end
 
-gem "bootstrap-sass", "~> 3.1.1"
 gem "omniauth"
 gem 'omniauth-github'
 gem 'figaro', git: 'https://github.com/laserlemon/figaro.git'
