@@ -7,3 +7,23 @@
   overflow: scroll;
   magin-top: 100px;
 }
+
+#head {
+  background:gray;
+  -webkit-transition: 1s -webkit-transform;
+
+  &.top {
+    -webkit-transform: translateY(-200px);
+  }
+}
+
+#foot {
+  background: gray;
+  height: 300px;
+  width: 100%;
+}
+
+.iframe-absolute {
+  position: absolute;
+  z-index: -1;
+}
