@@ -1,8 +1,4 @@
-<div id="head">
-  <%= link_to "Sign in with Github", "/auth/github" if !session[:token] %>
-  <%= render "website_form" %>
-</div>
+<%= link_to "Sign in with Github", "/auth/github" if !session[:token] %>
+<%= render "header" %>
+<%= render "footer" %>
 
-<div id="foot">
-
-</div> 
