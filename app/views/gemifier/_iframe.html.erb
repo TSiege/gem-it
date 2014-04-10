@@ -1,8 +1,22 @@
 <div class="row" id="frame-bg">
   <div id="iframe-container-div">
-    <iframe onload="addListenersToIframe()" class="website" src="<%= remove_public(@file.path) %>" height="800">
+    <iframe onload="addListenersToIframe()" class="website" src="<%= remove_public(@file.path) %>" height="600">
     </iframe>
   </div>
 
-   <%= render "gem_form_column" %>
+  <div class="media">
+    <div class="media-body">
+      <div class="panel panel-default contact btn-footer">
+        <div class="panel-body">
+
+          <div id="iframe-side-helper">
+            <h2>Click on the data you're interested in from the left panel.</h2>
+          </div>
+          
+          <%= render "gem_form" %>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

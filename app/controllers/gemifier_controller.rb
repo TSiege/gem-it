@@ -27,11 +27,11 @@ class GemifierController < ApplicationController
     end
   end
 
-  def create_repo
-    @repo = Repo.new()
+  def create
+
     client = Octokit::Client.new(:access_token => session[:token])
+    binding.pry
     client.create_repo(params["repo_name"], {description: params[:description], :private => false})
-    
     @gemifier = Gemifier.new(params[:gem_name], author_name, params['url'], params['path'], params['email'] )
     @gemifier.scaffold
     

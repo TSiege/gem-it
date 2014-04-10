@@ -1,15 +1,21 @@
-<%= form_tag create_gem_path, {remote: true, role: "form"} do %>
-  <div class="form-group">
-    <%= label_tag :repo_name, "Repo Name" %>
-    <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
-    <%= label_tag :gem_name, "Gem Name" %>
-    <%= text_field_tag :gem_name, "", :class => "form-control" %><br>
-    <%= label_tag :description, "Description" %>
-    <%= text_field_tag :description, "", :class => "form-control" %><br>
-    <%= hidden_field_tag :path %>
-    <%= hidden_field_tag :url, @page %>
-  </div>
-  <div class="panel-footer">
-    <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block" %>
-  </div>
-<% end %>
+<div id="gem-form-column">
+  <h2 id="info-check">Is this the info you want? <span id="data"></span></h2>
+    
+    <%= form_tag create_gem_path, {remote: true, role: "form"} do %>
+      <div class="form-group">
+        <%= label_tag :repo_name, "Repo Name" %>
+        <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
+        <%= label_tag :gem_name, "Gem Name" %>
+        <%= text_field_tag :gem_name, "", :class => "form-control" %><br>
+        <%= label_tag :description, "Description" %>
+        <%= text_field_tag :description, "", :class => "form-control" %><br>
+        <%= hidden_field_tag :path %>
+        <%= hidden_field_tag :url, @page %>
+      </div>
+      <div class="panel-footer">
+        <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block" %>
+      </div>
+    <% end %>
+
+</div>
+
