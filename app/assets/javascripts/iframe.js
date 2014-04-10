@@ -1,10 +1,6 @@
-$(function() {
-  $("iframe").onload(function() {
-
-    addListenersToIframe();
-  });
-
-})();
+$( document ).ready(function() {
+  addListenersToIframe();
+});
 
 
 function addListenersToIframe() {

@@ -13,7 +13,10 @@ class GemifierController < ApplicationController
     @content = @content.gsub(/<meta[^[Xx]]*[Xx]-[Ff][rame]*[-][Oo][ptions]*[^>]*\/>/, "")
     @file.write(@content)
     @file.close
-    render :page
+    respond_to do |f|
+      f.html {render :page}
+      f.js
+    end
   end
 
   def create_repo

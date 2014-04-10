@@ -1,4 +1,10 @@
-<%= form_tag create_iframe_path do %>
+<script>
+
+
+
+</script>
+
+<%= form_tag create_iframe_path, {remote: true, id: 'website-form'} do %>
   <%= label_tag :website %>
   <%= text_field_tag :website %>
   <%= submit_tag %>
