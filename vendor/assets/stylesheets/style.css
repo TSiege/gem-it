@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,400italic|Open+Sans+Condensed:300,700|Pacifico);
+/*@import url(http://fonts.googleapis.com/css?family=Lato:300,400,400italic|Open+Sans+Condensed:300,700|Pacifico);*/
 body {
   font-family: 'Lato', sans-serif;
 }
@@ -129,7 +129,7 @@ body,
   }
 }
 .row.top .col-left .name {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
   font-size: 1.5em;
   padding: 10px 30px;
   margin-bottom: 0;

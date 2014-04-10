@@ -20,6 +20,12 @@ hr {
   float: left;
 }
 
+.gemify-navbar-text {
+  float: right;
+  position: relative;
+  top: -35px;
+}
+
 #gemify-navbar {
   position: static !important;
 }
