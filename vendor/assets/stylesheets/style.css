@@ -125,7 +125,6 @@ body,
 }
 @media (min-width: 768px) {
   .row.top {
-    position: fixed;
     width: 100%;
   }
 }
@@ -136,9 +135,8 @@ body,
   margin-bottom: 0;
   background: #333333;
 }
-.row.top .col-left .name a {
+.row.top .col-left .name span {
   color: #f7f7f7;
-  text-decoration: none;
 }
 .row.top .col-right nav {
   border-bottom: 1px solid #e6e6e6;
@@ -542,7 +540,6 @@ body,
     height: 16px;
     width: 100%;
     background: url("../img/gradient.png");
-    position: fixed;
     z-index: 2;
   }
   #scroll-shadow:after {
