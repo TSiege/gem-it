@@ -1,2 +1,0 @@
-class GemsController < ApplicationController
-end

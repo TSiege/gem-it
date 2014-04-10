@@ -3,15 +3,13 @@ Rails.application.routes.draw do
   get '/' => 'gemifier#index'
   get 'auth/github/callback', to: 'gemifier#omniauth'
 
+  post '/iframe' => 'gemifier#create_iframe', as: :create_iframe
+
+  post '/gems' => 'gems#create', as: :create_gem
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
-
-  post '/welcome' => 'welcome#create', as: :create_welcome
-
-  post '/gems' => 'gems#create', as: :create_gem
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
