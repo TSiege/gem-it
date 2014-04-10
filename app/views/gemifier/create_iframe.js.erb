@@ -1,2 +1,7 @@
 $("body").append("<%= j render 'iframe'  %>");
+var navHeight = $("#head").height();
+$("iframe").addClass("iframe-absolute").css("top", navHeight);
+
+$("#head").addClass("top");
+
 $("body").prepend("<%= j render 'gem_form'  %>");

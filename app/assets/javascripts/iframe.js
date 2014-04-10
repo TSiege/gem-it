@@ -13,6 +13,10 @@ function addListenersToIframe() {
       var p = getPathTo(e.target)
       $data.text(t);
       $path.val(p);
+      if( $('#iframe-side-helper').is(':visible') ) {
+        $('#iframe-side-helper').hide();
+        $('#gem-form-column').show();
+      }
     });
   });
 }

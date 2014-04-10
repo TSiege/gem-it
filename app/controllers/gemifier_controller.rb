@@ -19,7 +19,13 @@ class GemifierController < ApplicationController
       f.js
     end
   end
-  
+
+  def create_side_column
+    respond_to do |f|
+      f.html {render :right_side_column}
+      f.js
+    end
+  end
 
   def create_repo
     @repo = Repo.new()

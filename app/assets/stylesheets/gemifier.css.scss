@@ -8,10 +8,19 @@
   magin-top: 100px;
 }
 
+.iframe-absolute {
+  position: absolute;
+  z-index: -1;
+}
+
 .footer-bar {
   margin-left: auto;
   margin-right: auto;
-  width: 80%
+  width: 80%;
+
+  &.top {
+    -webkit-transform: translateY(-200px);
+  }
 }
 
 #iframe-container-div {
@@ -31,4 +40,8 @@
 
 #gemify-logo {
   font-size: 30px;
+}
+
+#gem-form-column {
+  display: none;
 }
