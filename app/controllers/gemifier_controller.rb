@@ -5,6 +5,7 @@ class GemifierController < ApplicationController
 
   def create_iframe
     @page = params[:website]
+    @page = "http://#{@page}" if !@page !~ /http/
     @doc = open(@page)
     digest = Digest::MD5.hexdigest(@page)
     @file = File.new("public/tmp/#{digest}.html", 'w')
@@ -18,6 +19,8 @@ class GemifierController < ApplicationController
   def create_repo
     client = Octokit::Client.new(:access_token => session[:token])
     client.create_repo(params["repo_name"], {description: params[:description], :private => false})
+    @gemifier = Gemifier.new
+    @gemifier.scaffold(params['name'], params['name'], params['url'], params['path'], email)
     reset_session
     flash[:notice] = "#{params["repo_name"]} was successfully gemified"
     redirect_to "/"

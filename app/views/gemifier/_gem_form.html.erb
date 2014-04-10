@@ -5,8 +5,7 @@
   <%= text_field_tag(:gem_name) %><br>
   <%= label_tag(:description, "Description:") %>
   <%= text_field_tag(:description) %><br>
-  <%= label_tag :data %>
-  <%= text_field_tag :data %>
   <%= hidden_field_tag :path %><br>
+  <%= hidden_field_tag :url, @page %><br>
   <%= submit_tag("Gemify") %>
 <% end %>

@@ -10,6 +10,7 @@ class Gemifier < ActiveRecord::Base
     gem_lib_dir = "#{gem_name}/lib"
     gem_lib_gem_dir = "#{gem_lib_dir}/#{gem_name}"
 
+    node_path_2 = node_path.gsub(/tbody\[.\]/,"")
     # Create gem directory and nested lib directory
     Dir.mkdir(gem_name)
     Dir.mkdir(gem_lib_dir)
@@ -49,7 +50,10 @@ module #{gem_const}
 
     def call
       doc = Nokogiri::HTML(open(self.source))
-      result = doc.css('#{node_path}').text
+      result = doc.xpath('#{node_path}').text
+      if result.empty?
+        result = doc.xpath('#{node_path_2}').text
+      end
       Info.new(result)
     end
   end
