@@ -1,6 +1,7 @@
 // Place all the styles related to the Gemifier controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .website {
   width: 100%;
   max-wdith: 800px;
@@ -8,11 +9,24 @@
   magin-top: 100px;
 }
 
-
 hr {
   margin: auto;
   width: 80%;
   margin-bottom: 20px;
+
+.iframe-absolute {
+  position: absolute;
+  z-index: -1;
+}
+
+.footer-bar {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+  &.top {
+    -webkit-transform: translateY(-200px);
+  }
 }
 
 #iframe-container-div {
@@ -85,4 +99,7 @@ hr {
 
 }
 
+#gem-form-column {
+  display: none;
+}
 
