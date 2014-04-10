@@ -1,4 +1,8 @@
 <%= link_to "Sign in with Github", "/auth/github" if !session[:token] %>
 <%= render "header" %>
-<%= render "footer" %>
 
+<div id="iframe-and-form">
+  <%= render "iframe" %>
+  <%= render "gem_form" %>
+</div>
+<%= render "footer" %>

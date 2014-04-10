@@ -1,5 +1,6 @@
 class GemifierController < ApplicationController
   def index
+    @file = File.new("app/views/layouts/application.html.erb")
     # render "omniauth_success" if session[:token]
   end
 

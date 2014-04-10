@@ -1,5 +1,6 @@
 <h2>Is this the info you want? <span id="data"></span></h2>
 
-<iframe onload="addListenersToIframe()" class="website" src="<%= remove_public(@file.path) %>" height="800">
-</iframe>
-
+<div id="iframe-container-div">
+  <iframe onload="addListenersToIframe()" class="website" src="<%= remove_public(@file.path) %>" height="800">
+  </iframe>
+</div>

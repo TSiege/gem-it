@@ -12,6 +12,7 @@
 .iframe-absolute {
   position: absolute;
   z-index: -1;
+}
 
 .footer-bar {
   margin-left: auto;
@@ -21,4 +22,9 @@
   &.top {
     -webkit-transform: translateY(-200px);
   }
+}
+
+#iframe-container-div {
+  width: 75%;
+  float: left;
 }

@@ -1,11 +1,69 @@
-<%= form_tag(create_gem_path, method: "post") do %>
-  <%= label_tag(:repo_name, "Repo Name:") %>
-  <%= text_field_tag(:repo_name) %><br>
-  <%= label_tag(:gem_name, "Gem Name:") %>
-  <%= text_field_tag(:gem_name) %><br>
-  <%= label_tag(:description, "Description:") %>
-  <%= text_field_tag(:description) %><br>
-  <%= hidden_field_tag :path %><br>
-  <%= hidden_field_tag :url, @page %><br>
-  <%= submit_tag("Gemify") %>
-<% end %>
+
+<div class="col-lg-4 col-md-4 col-sm-5 col-right">
+    <div id="scroll-shadow"></div>
+    <h1 class="visible-xs section-header" id="posts-list">Last articles</h1>
+    <h1 class="visible-xs text-center spacer">___</h1>
+    
+    <section class="blog">
+    
+        <!--article-->
+        <div class="media">
+
+            <div class="media-body">
+              <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+                  <h1>Gem It</h1>
+                  <h1 class="spacer">___</h1>
+                  <div class="panel panel-default contact btn-footer">
+                    <div class="panel-body">
+
+    <%#= label_tag :website, "Website URL" %>
+    <%#= text_field_tag :website, "", :class => "form-control" %>
+  </div>
+  <div class="panel-footer">
+    <%#= submit_tag "Get It", :class => "btn btn-grey btn-lg btn-block" %>
+  </div>
+
+
+
+
+            
+<%= form_tag create_gem_path, {remote: true, role: "form"} do %>
+  <div class="form-group">
+                <%= label_tag :repo_name, "Repo Name:" %>
+                <%= text_field_tag :repo_name, :class => "form-control" %><br>
+                <%= label_tag :gem_name, "Gem Name:" %>
+                <%= text_field_tag :gem_name %><br>
+                <%= label_tag :description, "Description:" %>
+                <%= text_field_tag :description %><br>
+                <%= hidden_field_tag :path %><br>
+                <%= hidden_field_tag :url, @page %><br>
+                <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block" %>
+              <% end %>
+
+
+                    </div>
+    </div>
+  </div>
+</div>
+                <!--article title-->
+                <h4 class="media-heading">10 Podcasts About Web Design
+                <span class="label label-default">New</span></h4>
+                
+                <!--article category-->
+                <p class="article-category">Graphic design</p>
+                
+                <!--article date-->
+                <p class="article-date">09 sep 2013</p>
+                
+                <!--article short description-->
+                <p class="article-description">Comitem generum supergressa idem reginae flagrans formula fines fines pretioso occideretur cuiusdam eius...view more</p>
+                
+            </div>
+        </div>
+    </section>
+    <a >Load more</a>
+    <a class="btn btn-block scroll-top visible-xs">
+        <img src="img/icon/icon-chevron.png" alt="Scroll top">
+    </a>
+</div>
