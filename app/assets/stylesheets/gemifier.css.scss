@@ -28,14 +28,14 @@
   float: left;
 }
 
-#info-check {
-  visibility: hidden;
-}
-
 #gemify-navbar {
   position: static !important;
 }
 
 #gemify-logo {
   font-size: 30px;
+}
+
+#gem-form-column {
+  display: none;
 }
