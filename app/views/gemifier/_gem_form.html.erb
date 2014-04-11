@@ -5,7 +5,8 @@
       <div class="form-group">
         <div id="gem-methods">
           <%= label_tag :method1, "Data 1" %>
-          <%= text_field_tag :method1, "", :class => "form-control", :id => "path_field" %><br>
+          <%= text_field_tag :method1, "", :class => "form-control", :id => "last-data-field" %><br>
+          <%= hidden_field_tag 'last-path-field' %>
         </div>
         <div id="gem-info">
           <%= label_tag :repo_name, "Repo Name" %>
@@ -17,7 +18,6 @@
           <%= label_tag :email, "Email" %>
           <%= text_field_tag :email, "", :class => "form-control" %><br>
         </div>
-        <%= hidden_field_tag :path %>
         <%= hidden_field_tag :url, @page %>
       </div>
       <div class="panel-footer">
