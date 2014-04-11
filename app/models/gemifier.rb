@@ -5,18 +5,19 @@ class Gemifier
   include Buildable::InstanceMethods
 
   attr_accessor :gem_name, :gem_const, :author, :url, :website,
-                :node_path, :node_path_fallback, :author_email, :bin_dir, 
-                :lib_dir, :gemfiles_dir, :client
+                :author_email, :bin_dir, :lib_dir, :gemfiles_dir, 
+                :client, :values, :description
 
-  def initialize(name, author, website, node_path, author_email, client)
+  def initialize(name, author, website, author_email, client = nil, values, description)
     @gem_name = name
     @author = author
     @website = website
-    @node_path = node_path
-    @node_path_fallback = node_path.gsub(/tbody\[.\]/,"")
+    @values = values
+    # @node_path_fallback = node_path.gsub(/tbody\[.\]/,"")
     @author_email = author_email
     @gem_const = gem_name.split("_").collect(&:titleize).join()
     @client = client
+    @description = description
   end
 
   def scaffold
@@ -69,11 +70,11 @@ class Gemifier
   end
 
   def push_to_github
-    %x(git init)
-    %x(git add -A)
-    %x(git commit -m "first commit")
-    %x(git remote add origin git@github.com:#{client.user.login}/#{gem_name}.git)
-    %x(git push -u origin master)
+    # %x(git init)
+    # %x(git add -A)
+    # %x(git commit -m "first commit")
+    # %x(git remote add origin git@github.com:#{client.user.login}/#{gem_name}.git)
+    # %x(git push -u origin master)
   end
 
 end

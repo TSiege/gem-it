@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'scraper'
-
-data = Scraper::Scrape.new("https://coinbase.com/").call
-
-puts data.data
