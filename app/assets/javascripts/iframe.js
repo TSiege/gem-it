@@ -11,7 +11,7 @@ function addListenersToIframe() {
       e.preventDefault();
       var t = e.target.innerHTML;
       var p = getPathTo(e.target)
-      $lastDataField.val(t);
+      $lastDataField.text(t);
       $lastPathField.val(p);
       if( $('#iframe-side-helper').is(':visible') ) {
         $('#iframe-side-helper').hide();
