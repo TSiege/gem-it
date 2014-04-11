@@ -29,10 +29,9 @@ class GemifierController < ApplicationController
 
   def create
     client = Octokit::Client.new(:access_token => session[:token])
-    binding.pry
     repo = client.create_repo(params["repo_name"], {description: params[:description], :private => false})
     values = create_hash(params[:method_name], params[:last_path])
-    
+    binding.pry
     gemifier = Gemifier.new(
       params[:gem_name], 
       client.user.login, 
@@ -46,7 +45,7 @@ class GemifierController < ApplicationController
 
     gemifier.scaffold
     
-    reset_session
+    # reset_session
     flash[:notice] = "#{params["repo_name"]} was successfully gemified"
     redirect_to "/"
   end
@@ -59,13 +58,11 @@ class GemifierController < ApplicationController
   private
 
   def create_hash(labels, node_paths)
-    h = {}
-    labels.each_with_index do |label, i|
+    labels.collect.with_index do |label, i|
       if !label.empty? && !node_paths[i].empty?
-        h[label] = node_paths[i]
+        {label => node_paths[i]}
       end  
     end 
-    h
   end
     
 end
