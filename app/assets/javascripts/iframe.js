@@ -13,6 +13,7 @@ function addListenersToIframe() {
       $("#last-gem-method #last-path-field").val(p);
       if( $('#iframe-side-helper').is(':visible') ) {
         $('#iframe-side-helper').hide();
+        $('#tab-bar').show();
         $('#gem-form-column').show();
       }
     });
