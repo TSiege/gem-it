@@ -34,11 +34,11 @@ function addFormFields() {
     var newFormDiv = $("<div>")
     newFormDiv.attr("id", "last-gem-method");
 
-    var newFormField = '<label for="method-name-1">Method Name</label>' +
-      '<input class="form-control" id="last-method-field" name="method-name-1" type="text" value=""><br>' +
-      '<label for="method-data-1">Is this the data you want?</label>' +
-      '<p><span id="last-data-field"></span></p>' +
-      '<input id="last-path-field" name="last-path-field" type="hidden" value="">';
+    var newFormField = '<label for="method_name[]">Method Name</label>' +
+      '<input class="form-control" id="last-method-field" name="method_name[]" type="text" value=""><br>' +
+      '<label for="method-data">Is this the data you want?</label>' +
+      '<p><span class="last-data-field"></span></p>' +
+      '<input class="last_path" name="last_path[]" type="hidden" value="">';
 
     newFormDiv.append(newFormField);
 
@@ -46,7 +46,7 @@ function addFormFields() {
 
     glyphicon.parent().removeAttr();
     $("#gem-methods").find("input").each(function(){
-        $(this).attr("disabled", "disabled");
+        $(this).attr("readonly", "readonly");
     });
     glyphicon.before(newFormDiv);
   });
