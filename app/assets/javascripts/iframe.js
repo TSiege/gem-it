@@ -6,7 +6,7 @@ $( document ).ready(function() {
 function addListenersToIframe() {
   var $path = $("#path");
   var $data = $("#data");
-  var $path-field = $("#path_field");
+
   $("iframe").contents().find("html").each(function() {
     $(this).bind("click", function(e) { 
       e.preventDefault();
