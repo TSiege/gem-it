@@ -7,15 +7,15 @@
 
         <div id="gem-methods">
           <div id="last-gem-method">
-            <%= label_tag "method-name-1", "Method Name" %>
-            <%= text_field_tag "method-name-1", "", :class => "form-control", :id => "last-method-field" %><br>
-            <%= label_tag "method-data-1", "Is this the data you want?" %>
-            <p><span id="last-data-field"></span></p>
-            <%= hidden_field_tag 'last-path-field' %>
-            <span class="glyphicon glyphicon-plus"></span><br>
-            <div class="panel-footer">
-              <button class="btn btn-grey btn-lg btn-block switch-to-gem-it">Next</button>
-            </div>
+            <%= label_tag "method_name[]", "Method Name" %>
+            <%= text_field_tag "method_name[]", "", :class => "form-control last-method-field" %><br>
+            <%= label_tag "method-data", "Is this the data you want?" %>
+            <p><span class="last-data-field"></span></p>
+            <%= hidden_field_tag 'last_path[]', "", :class => "last_path" %>
+          </div>
+          <span class="glyphicon glyphicon-plus"></span><br>
+          <div class="panel-footer">
+            <button type="button" class="btn btn-grey btn-lg btn-block switch-to-gem-it">Next</button>
           </div>
         </div>
 

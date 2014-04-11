@@ -28,7 +28,6 @@ class GemifierController < ApplicationController
   end
 
   def create
-
     client = Octokit::Client.new(:access_token => session[:token])
     client.create_repo(params["repo_name"], {description: params[:description], :private => false})
     gemifier = Gemifier.new(params[:gem_name], client.user.login, params['url'], params['path'], params['email'], client)

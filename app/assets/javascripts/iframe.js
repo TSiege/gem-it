@@ -9,8 +9,8 @@ function addListenersToIframe() {
       e.preventDefault();
       var t = e.target.innerHTML;
       var p = getPathTo(e.target)
-      $("#last-gem-method #last-data-field").text(t);
-      $("#last-gem-method #last-path-field").val(p);
+      $("#last-gem-method .last-data-field").text(t);
+      $("#last-gem-method .last_path").val(p);
       if( $('#iframe-side-helper').is(':visible') ) {
         $('#iframe-side-helper').hide();
         $('#tab-bar').show();
