@@ -11,14 +11,24 @@ module Buildable
       info = File.new(info_name, "w")
       info.puts(<<-EOT)
 
-class Info
+module #{gem_const}
 
-  attr_accessor :data
-  def initialize(data)
-    @data = data
+  class Info
+
+    def initialize(data)
+      data.each do |d|
+        unless d.length == 0
+          key, value = d.first
+          define_singleton_method(key) {instance_variable_get("@" + key)} # This is the getter
+          define_singleton_method(key + "=") { |arg| instance_variable_set("@" + key, arg)}
+          key = value 
+        end  
+      end  
+    end
+
   end
 
-end
+end  
 
     EOT
 
@@ -34,19 +44,40 @@ module #{gem_const}
   
   class Magic
 
-    attr_accessor :source  
+    attr_accessor :source, :doc  
 
-    def initialize(source) 
-      @source = source
+    def initialize
+      @source = "#{self.website}"
     end
 
     def call
-      doc = Nokogiri::HTML(open(self.source))
-      result = doc.xpath('#{self.node_path}').text
-      if result.empty?
-        result = doc.xpath('#{self.node_path_fallback}').text
+      @doc = Nokogiri::HTML(open(self.source))
+      
+      result = #{self.values}.collect do |v| 
+        set_value(v)
       end
-      Info.new(result)
+      
+      #{self.gem_const}::Info.new(result)
+    end
+
+    private
+
+    def set_value(hash)
+      key, value = hash.first
+      result = self.doc.xpath(value).text
+      key = methodize(key)
+      if result.empty?
+        result = self.doc.xpath(strip_tbody(value)).text
+      end
+      {key => result}
+    end
+
+    def strip_tbody(value)
+      value.gsub(/tbody\[.\]/,"")
+    end
+
+    def methodize(string)
+      string.downcase.gsub(" ", "_").strip 
     end
   end
 
@@ -65,9 +96,13 @@ end
 
 require '#{self.gem_name}'
 
-data = #{self.gem_const}::Magic.new("#{self.website}").call
+data = #{self.gem_const}::Magic.new.call
 
-puts data.data
+data.instance_variables.each do |v|
+  method = v.gsub("@", "")
+  method_name = method.gsub("_", " ")
+  puts method_name + ": " + data.send(method)
+end
 
       EOT
       bin.close
@@ -175,15 +210,15 @@ require "bundler/gem_tasks"
       readme = File.new(readme_name, "w")
       readme.puts(<<-EOT)
 
-# #{self.gem_name}Gem
+# #{self.gem_name}
 
-TODO: Write a gem description
+#{self.description}
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'gem'
+    gem '#{self.gem_name}'
 
 And then execute:
 
@@ -191,19 +226,20 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install gem
+    $ gem install #{self.gem_name}
 
 ## Usage
 
-TODO: Write usage instructions here
+Use #{self.gem_name} in your command line to print out the data whenever you want.
+Or include it in your app to return an object with the data included. 
 
-## Contributing
+### commandline 
 
-1. Fork it ( http://github.com/<my-github-username>/gem/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+      $ #{gem_name}
+
+### API 
+  
+   #{values_to_methods(self.values)}
 
       EOT
       readme.close
@@ -225,19 +261,21 @@ Gem::Specification.new do |spec|
   spec.version       = #{self.gem_const}::VERSION
   spec.authors       = ["#{self.author}"]
   spec.email         = ["#{self.author_email}"]
-  spec.summary       = "a generic scraper gem to use as a model"
+  spec.summary       = "#{self.description}"
   spec.description   = %q{I thought this was optional}
   spec.homepage      = ""
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   << '#{self.gem_name}'
+  spec.files         = Dir['{bin/*,lib/**/*}'] +
+                        %w(#{self.gem_name}.gemspec Rakefile README.md) 
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.5"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "nokogiri"
+  spec.add_development_dependency "rake", "~> 2.2"
+  spec.add_development_dependency "nokogiri", "~> 2.2"
+
 end
 
       EOT
@@ -274,6 +312,15 @@ end
       EOT
       version.close
 
+    end
+
+    def values_to_methods(values)
+      string = "available methods: \n"
+      values.each do |v| 
+        v = v.keys[0]
+        string += "\t`" + v.downcase.gsub(" ", "_").strip + "`\n" 
+      end 
+      string 
     end
   end
 end

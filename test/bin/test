@@ -1,9 +1,0 @@
-
-#!/usr/bin/env ruby
-
-require 'test'
-
-data = Test::Magic.new("").call
-
-puts data.data
-
