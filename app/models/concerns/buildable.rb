@@ -239,7 +239,7 @@ Or include it in your app to return an object with the data included.
 
 ### API 
   
-   #{values_to_methods(self.values)}
+  
 
       EOT
       readme.close
