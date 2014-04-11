@@ -8,7 +8,7 @@ class Gemifier
                 :author_email, :bin_dir, :lib_dir, :gemfiles_dir, 
                 :client, :values, :description
 
-  def initialize(name, author, website, author_email, client = nil, values, description)
+  def initialize(name, author, website, author_email, client, values, description)
     @gem_name = name
     @author = author
     @website = website
@@ -70,11 +70,11 @@ class Gemifier
   end
 
   def push_to_github
-    # %x(git init)
-    # %x(git add -A)
-    # %x(git commit -m "first commit")
-    # %x(git remote add origin git@github.com:#{client.user.login}/#{gem_name}.git)
-    # %x(git push -u origin master)
+    %x(git init)
+    %x(git add -A)
+    %x(git commit -m "first commit")
+    %x(git remote add origin git@github.com:#{client.user.login}/#{gem_name}.git)
+    %x(git push -u origin master)
   end
 
 end
