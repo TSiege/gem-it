@@ -30,7 +30,20 @@ class GemifierController < ApplicationController
   def create
     client = Octokit::Client.new(:access_token => session[:token])
     client.create_repo(params["repo_name"], {description: params[:description], :private => false})
-    gemifier = Gemifier.new(params[:gem_name], client.user.login, params['url'], params['path'], params['email'], client)
+    
+    values = create_hash(params[:method_name], params[:last_path])
+    
+    gemifier = Gemifier.new(
+      params[:gem_name], 
+      client.user.login, 
+      params['url'], 
+      params['path'], 
+      params['email'], 
+      client, 
+      values, 
+      params[:description]
+    )
+
     gemifier.scaffold
     
     reset_session
@@ -42,4 +55,17 @@ class GemifierController < ApplicationController
     session[:token] = env["omniauth.auth"]["credentials"]["token"]
     redirect_to "/"
   end
+
+  private
+
+  def create_hash(labels, node_paths)
+    h = {}
+    labels.each_with_index do |label, i|
+      if !label.empty? && !node_paths[i].empty?
+        h[label] = node_paths[i]
+      end  
+    end 
+    h
+  end
+    
 end
