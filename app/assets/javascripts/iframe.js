@@ -4,15 +4,13 @@ $( document ).ready(function() {
 
 
 function addListenersToIframe() {
-  var $lastDataField = $("#last-data-field");
-  var $lastPathField = $("#last-path-field");
   $("iframe").contents().find("html").each(function() {
     $(this).bind("click", function(e) { 
       e.preventDefault();
       var t = e.target.innerHTML;
       var p = getPathTo(e.target)
-      $lastDataField.text(t);
-      $lastPathField.val(p);
+      $("#last-gem-method #last-data-field").text(t);
+      $("#last-gem-method #last-path-field").val(p);
       if( $('#iframe-side-helper').is(':visible') ) {
         $('#iframe-side-helper').hide();
         $('#gem-form-column').show();

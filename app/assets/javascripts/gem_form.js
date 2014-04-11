@@ -1,5 +1,6 @@
 $( document ).ready(function() {
   $(".glyphicon-plus").on("click", function(e){
+    $("div#last-gem-method").removeAttr("id")
     var glyphicon = $(this)
     var newFormDiv = $("<div>")
     newFormDiv.attr("id", "last-gem-method");
@@ -13,8 +14,10 @@ $( document ).ready(function() {
     newFormDiv.append(newFormField);
 
     glyphicon.parent().removeAttr();
-    glyphicon.siblings("input").attr("disabled", "disabled");
-    glyphicon.prepend(newFormDiv);
+    $("#gem-methods").find("input").each(function(){
+        $(this).attr("disabled", "disabled");
+    });
+    glyphicon.before(newFormDiv);
   });
 });
 

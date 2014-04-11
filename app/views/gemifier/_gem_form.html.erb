@@ -4,12 +4,14 @@
     <%= form_tag create_gem_path, {remote: true, role: "form"} do %>
       <div class="form-group">
         <div id="gem-methods">
-          <%= label_tag "method-name-1", "Method Name" %>
-          <%= text_field_tag "method-name-1", "", :class => "form-control", :id => "last-method-field" %><br>
-          <%= label_tag "method-data-1", "Is this the data you want?" %>
-          <p><span id="last-data-field"></span></p>
-          <%= hidden_field_tag 'last-path-field' %>
-          <span class="glyphicon glyphicon-plus"></span><br>
+          <div id="last-gem-method">
+            <%= label_tag "method-name-1", "Method Name" %>
+            <%= text_field_tag "method-name-1", "", :class => "form-control", :id => "last-method-field" %><br>
+            <%= label_tag "method-data-1", "Is this the data you want?" %>
+            <p><span id="last-data-field"></span></p>
+            <%= hidden_field_tag 'last-path-field' %>
+            <span class="glyphicon glyphicon-plus"></span><br>
+          </div>
         </div>
         <div id="gem-info">
           <%= label_tag :repo_name, "Repo Name" %>
