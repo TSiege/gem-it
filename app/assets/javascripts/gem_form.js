@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+
   $(".glyphicon-plus").on("click", function(e){
     $("div#last-gem-method").removeAttr("id")
     var glyphicon = $(this)
@@ -19,6 +20,7 @@ $( document ).ready(function() {
     });
     glyphicon.before(newFormDiv);
   });
+
 });
 
 
