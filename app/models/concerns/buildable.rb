@@ -73,7 +73,7 @@ module #{gem_const}
     end
 
     def strip_tbody(value)
-      value.gsub(/tbody\[.\]/,"")
+      value.gsub(/tbody\[.\]/,"") if !value.nil?
     end
 
     def methodize(string)
