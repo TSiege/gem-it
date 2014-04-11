@@ -6,9 +6,9 @@ class Gemifier
 
   attr_accessor :gem_name, :gem_const, :author, :url, :website,
                 :author_email, :bin_dir, :lib_dir, :gemfiles_dir, 
-                :client, :values, :description
+                :client, :values, :description, :repo
 
-  def initialize(name, author, website, author_email, client, values, description)
+  def initialize(name, author, website, author_email, client, values, description, repo)
     @gem_name = name
     @author = author
     @website = website
@@ -18,6 +18,7 @@ class Gemifier
     @gem_const = gem_name.split("_").collect(&:titleize).join()
     @client = client
     @description = description
+    @repo = repo
   end
 
   def scaffold
@@ -73,7 +74,7 @@ class Gemifier
     %x(git init)
     %x(git add -A)
     %x(git commit -m "first commit")
-    %x(git remote add origin git@github.com:#{client.user.login}/#{gem_name}.git)
+    %x(git remote add origin #{repo.ssh_url})
     %x(git push -u origin master)
   end
 
