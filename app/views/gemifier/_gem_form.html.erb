@@ -3,14 +3,20 @@
     
     <%= form_tag create_gem_path, {remote: true, role: "form"} do %>
       <div class="form-group">
-        <%= label_tag :repo_name, "Repo Name" %>
-        <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
-        <%= label_tag :gem_name, "Gem Name" %>
-        <%= text_field_tag :gem_name, "", :class => "form-control" %><br>
-        <%= label_tag :description, "Description" %>
-        <%= text_field_tag :description, "", :class => "form-control" %><br>
-        <%= label_tag :email, "Email" %>
-        <%= text_field_tag :email, "", :class => "form-control" %><br>
+        <div id="gem-methods">
+          <%= label_tag :method1, "Data 1" %>
+          <%= text_field_tag :method1, "", :class => "form-control", :id => "path_field" %><br>
+        </div>
+        <div id="gem-info">
+          <%= label_tag :repo_name, "Repo Name" %>
+          <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
+          <%= label_tag :gem_name, "Gem Name" %>
+          <%= text_field_tag :gem_name, "", :class => "form-control" %><br>
+          <%= label_tag :description, "Description" %>
+          <%= text_field_tag :description, "", :class => "form-control" %><br>
+          <%= label_tag :email, "Email" %>
+          <%= text_field_tag :email, "", :class => "form-control" %><br>
+        </div>
         <%= hidden_field_tag :path %>
         <%= hidden_field_tag :url, @page %>
       </div>

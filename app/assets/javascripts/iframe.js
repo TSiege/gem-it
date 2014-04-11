@@ -6,6 +6,7 @@ $( document ).ready(function() {
 function addListenersToIframe() {
   var $path = $("#path");
   var $data = $("#data");
+  var $path-field = $("#path_field");
   $("iframe").contents().find("html").each(function() {
     $(this).bind("click", function(e) { 
       e.preventDefault();
@@ -13,6 +14,7 @@ function addListenersToIframe() {
       var p = getPathTo(e.target)
       $data.text(t);
       $path.val(p);
+      
       if( $('#iframe-side-helper').is(':visible') ) {
         $('#iframe-side-helper').hide();
         $('#gem-form-column').show();
