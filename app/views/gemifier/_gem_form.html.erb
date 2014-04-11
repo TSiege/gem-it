@@ -1,5 +1,5 @@
 <div id="gem-form-column">
-  <h2 id="info-check">Is this the info you want? <span id="data"></span></h2>
+  <h2 id="info-check">Is this the info you want? <br> <span id="data"></span></h2>
     
     <%= form_tag create_gem_path, {remote: true, role: "form"} do %>
       <div class="form-group">
@@ -15,7 +15,7 @@
         <%= hidden_field_tag :url, @page %>
       </div>
       <div class="panel-footer">
-        <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block" %>
+        <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block gem-it-btn" %>
       </div>
     <% end %>
 

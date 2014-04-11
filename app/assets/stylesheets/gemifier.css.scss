@@ -98,3 +98,17 @@ iframe {
 #gem-form-column {
   display: none;
 }
+
+.gem-it-btn {
+  color: #fff;
+  background-color: #e31b23;
+  background-image: linear-gradient(#e31b23, #b32024);
+  border: 1px solid #a00;
+  border-bottom: 1px solid #9f081e;
+}
+
+.gem-it-btn:hover {
+  color: #fafafa;
+  background-color: #a00;
+}
+
