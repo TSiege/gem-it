@@ -1,6 +1,10 @@
 $( document ).ready(function() {
   $(".glyphicon-plus").on("click", function(e){
-    $(this).siblings("input").attr("disabled", "disabled");
+    var glyphicon = $(this)
+    var newFormField = $("<div>")
+    newFormField.attr()
     
+    glyphicon.siblings("input").attr("disabled", "disabled");
+    glyphicon.prepend(newFormField);
   });
 });
