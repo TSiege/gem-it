@@ -156,6 +156,7 @@ body,
   display: table-cell;
   padding: 0;
   width: 25%;
+  border: 1px solid #e6e6e6;
 }
 .row.top .col-right nav .list-inline li.last a {
   display: inline;
@@ -166,6 +167,7 @@ body,
 }
 .row.top .col-right nav .list-inline li.active {
   background: #f7f7f7;
+  border-bottom: 0px;
 }
 .row.top .col-right nav .list-inline li.active a:hover {
   background: #f7f7f7;
@@ -176,7 +178,6 @@ body,
   font-weight: bold;
   text-transform: uppercase;
   color: #333333;
-  border-right: 1px solid #e6e6e6;
   padding: 10px 0;
   font-size: 16px;
 }

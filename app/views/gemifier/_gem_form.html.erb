@@ -2,6 +2,7 @@
   <h2 id="info-check">Grab your data.<span id="data"></span></h2>
     
     <%= form_tag create_gem_path, {remote: true, role: "form"} do %>
+
       <div class="form-group">
         <div id="gem-methods">
           <div id="last-gem-method">
@@ -13,6 +14,7 @@
             <span class="glyphicon glyphicon-plus"></span><br>
           </div>
         </div>
+        
         <div id="gem-info">
           <%= label_tag :repo_name, "Repo Name" %>
           <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
