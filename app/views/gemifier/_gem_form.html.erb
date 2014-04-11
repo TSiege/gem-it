@@ -12,9 +12,12 @@
             <p><span id="last-data-field"></span></p>
             <%= hidden_field_tag 'last-path-field' %>
             <span class="glyphicon glyphicon-plus"></span><br>
+            <div class="panel-footer">
+              <button class="btn btn-grey btn-lg btn-block switch-to-gem-it">Next</button>
+            </div>
           </div>
         </div>
-        
+
         <div id="gem-info">
           <%= label_tag :repo_name, "Repo Name" %>
           <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
@@ -24,11 +27,11 @@
           <%= text_field_tag :description, "", :class => "form-control" %><br>
           <%= label_tag :email, "Email" %>
           <%= text_field_tag :email, "", :class => "form-control" %><br>
+          <%= hidden_field_tag :url, @page %>
+          <div class="panel-footer">
+            <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block" %>
+          </div>
         </div>
-        <%= hidden_field_tag :url, @page %>
-      </div>
-      <div class="panel-footer">
-        <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block" %>
       </div>
     <% end %>
 
