@@ -1,11 +1,14 @@
 <div id="gem-form-column">
-  <h2 id="info-check">Is this the info you want? <span id="data"></span></h2>
+  <h2 id="info-check">Grab your data.<span id="data"></span></h2>
     
     <%= form_tag create_gem_path, {remote: true, role: "form"} do %>
       <div class="form-group">
         <div id="gem-methods">
-          <%= label_tag :method1, "Data 1" %>
-          <%= text_field_tag :method1, "", :class => "form-control", :id => "last-data-field" %><span class="glyphicon glyphicon-plus"></span><br>
+          <%= label_tag "method-name-1", "Method Name" %>
+          <%= text_field_tag "method-name-1", "", :class => "form-control", :id => "last-method-field" %><br>
+          <%= label_tag "method-data-1", "Is this the data you want?" %>
+          <p><span id="last-data-field"></span></p>
+          <span class="glyphicon glyphicon-plus"></span><br>
           <%= hidden_field_tag 'last-path-field' %>
         </div>
         <div id="gem-info">
