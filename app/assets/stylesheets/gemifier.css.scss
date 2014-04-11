@@ -95,6 +95,16 @@ iframe {
 
 }
 
+#tab-bar {
+  display: none;
+  overflow: auto;
+  background-color: #f7f7f7;
+}
+
+#gem-info {
+  display: none;
+}
+
 #gem-form-column {
   display: none;
 }
@@ -110,5 +120,10 @@ iframe {
 .gem-it-btn:hover {
   color: #fafafa;
   background-color: #a00;
+}
+
+.right-column-height-fix {
+  height: 600px !important;
+  overflow: auto;
 }
 

@@ -1,21 +1,39 @@
 <div id="gem-form-column">
-  <h2 id="info-check">Is this the info you want? <br> <span id="data"></span></h2>
+  <h2 id="info-check">Grab your data.<span id="data"></span></h2>
     
     <%= form_tag create_gem_path, {remote: true, role: "form"} do %>
+
       <div class="form-group">
-        <%= label_tag :repo_name, "Repo Name" %>
-        <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
-        <%= label_tag :gem_name, "Gem Name" %>
-        <%= text_field_tag :gem_name, "", :class => "form-control" %><br>
-        <%= label_tag :description, "Description" %>
-        <%= text_field_tag :description, "", :class => "form-control" %><br>
-        <%= label_tag :email, "Email" %>
-        <%= text_field_tag :email, "", :class => "form-control" %><br>
-        <%= hidden_field_tag :path %>
-        <%= hidden_field_tag :url, @page %>
-      </div>
-      <div class="panel-footer">
-        <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block gem-it-btn" %>
+
+        <div id="gem-methods">
+          <div id="last-gem-method">
+            <%= label_tag "method-name-1", "Method Name" %>
+            <%= text_field_tag "method-name-1", "", :class => "form-control", :id => "last-method-field" %><br>
+            <%= label_tag "method-data-1", "Is this the data you want?" %>
+            <p><span id="last-data-field"></span></p>
+            <%= hidden_field_tag 'last-path-field' %>
+            <span class="glyphicon glyphicon-plus"></span><br>
+            <div class="panel-footer">
+              <button class="btn btn-grey btn-lg btn-block switch-to-gem-it">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="gem-info">
+          <%= label_tag :repo_name, "Repo Name" %>
+          <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
+          <%= label_tag :gem_name, "Gem Name" %>
+          <%= text_field_tag :gem_name, "", :class => "form-control" %><br>
+          <%= label_tag :description, "Description" %>
+          <%= text_field_tag :description, "", :class => "form-control" %><br>
+          <%= label_tag :email, "Email" %>
+          <%= text_field_tag :email, "", :class => "form-control" %><br>
+          <%= hidden_field_tag :url, @page %>
+          <div class="panel-footer">
+            <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block gem-it-btn" %>
+          </div>
+        </div>
+
       </div>
     <% end %>
 

@@ -4,17 +4,16 @@ $( document ).ready(function() {
 
 
 function addListenersToIframe() {
-  var $path = $("#path");
-  var $data = $("#data");
   $("iframe").contents().find("html").each(function() {
     $(this).bind("click", function(e) { 
       e.preventDefault();
       var t = e.target.innerHTML;
       var p = getPathTo(e.target)
-      $data.text(t);
-      $path.val(p);
+      $("#last-gem-method #last-data-field").text(t);
+      $("#last-gem-method #last-path-field").val(p);
       if( $('#iframe-side-helper').is(':visible') ) {
         $('#iframe-side-helper').hide();
+        $('#tab-bar').show();
         $('#gem-form-column').show();
       }
     });
