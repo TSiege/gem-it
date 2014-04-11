@@ -31,7 +31,6 @@ class GemifierController < ApplicationController
     client = Octokit::Client.new(:access_token => session[:token])
     repo = client.create_repo(params["repo_name"], {description: params[:description], :private => false})
     values = create_hash(params[:method_name], params[:last_path])
-    binding.pry
     gemifier = Gemifier.new(
       params[:gem_name], 
       client.user.login, 

@@ -19,9 +19,9 @@ module #{gem_const}
       data.each do |d|
         unless d.length == 0
           key, value = d.first
-          define_singleton_method(key) {instance_variable_get("@" + key)} # This is the getter
-          define_singleton_method(key + "=") { |arg| instance_variable_set("@" + key, arg)}
-          key = value 
+          method_name = key
+          instance_variable_set("@" + method_name, value)
+          define_singleton_method(key) {instance_variable_get("@" + key)} 
         end  
       end  
     end
