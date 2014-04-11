@@ -1,5 +1,16 @@
 $( document ).ready(function() {
+  switchFormTabs();
+  addFormFields();
+});
 
+function switchFormTabs() {
+    $("ul.list-inline li").click(function(){
+    $("li.active").removeClass();
+    $(this).addClass("active");
+  });
+}
+
+function addFormFields() {
   $(".glyphicon-plus").on("click", function(e){
     $("div#last-gem-method").removeAttr("id")
     var glyphicon = $(this)
@@ -22,9 +33,4 @@ $( document ).ready(function() {
     });
     glyphicon.before(newFormDiv);
   });
-
-});
-
-
-
-
+}

@@ -95,17 +95,18 @@ iframe {
 
 }
 
+#tab-bar {
+  display: none;
+  overflow: auto;
+  background-color: #f7f7f7;
+}
+
 #gem-info {
   display: none;
 }
 
 #gem-form-column {
   display: none;
-}
-
-#tab-form {
-  overflow: auto;
-  background-color: #f7f7f7;
 }
 
 .right-column-height-fix {
