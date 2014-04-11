@@ -13,6 +13,8 @@ $( document ).ready(function() {
 
     newFormDiv.append(newFormField);
 
+    $("label[for='method-data-1']").text("This is the data you want.")
+
     glyphicon.parent().removeAttr();
     $("#gem-methods").find("input").each(function(){
         $(this).attr("disabled", "disabled");
