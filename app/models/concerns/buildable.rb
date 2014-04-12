@@ -99,7 +99,7 @@ require '#{self.gem_name}'
 data = #{self.gem_const}::Magic.new.call
 
 data.instance_variables.each do |v|
-  method = v.gsub("@", "")
+  method = v.to_s.gsub("@", "")
   method_name = method.gsub("_", " ")
   puts method_name + ": " + data.send(method)
 end
