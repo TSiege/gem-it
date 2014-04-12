@@ -32,14 +32,13 @@ iframe {
 .gemify-navbar-text {
   float: right;
   position: relative;
-  top: -35px;
+  top: -38px;
 }
 
 #gemify-navbar {
   position: relative !important;
   z-index: 2;
   &.row {
-
 
     &:after {
       content: none !important;
@@ -122,8 +121,33 @@ iframe {
   background-color: #a00;
 }
 
+.gem-it-btn:focus {
+  color: #fff;
+}
+
 .right-column-height-fix {
   height: 600px !important;
   overflow: auto;
+  z-index: 3;
+}
+span.glyphicon {
+  color: #4f4f4f;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+span.glyphicon:hover {
+  color: #0f0f0f;
+}
+
+.gem-form-tabs {
+  width: 23%;
+  margin-right: 0 !important;
+}
+
+div.gem-form-tabs.col-right {
+  margin-right: 0 !important;
+}
+
+.row.top .col-right nav .list-inline li {
+  background-color: #fff;
+}
