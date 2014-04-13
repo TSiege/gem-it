@@ -9,8 +9,10 @@
         <div id="last-gem-method">
           <%= label_tag "method_name[]", "Method Name" %>
           <span class="error-message" id="method-name-error" style="display: none;"><br>A method name can't be less than 3 characters.</span>
+          <span class="error-message" id="method-name-uniqueness-error" style="display: none;"><br> Method names must be unique.</span>
           <%= text_field_tag "method_name[]", "", :class => "form-control", id: "last-method-field" %><br>
           <%= label_tag "method-data", "Is this the data you want?" %>
+          <span class="error-message" id="hidden-input-error" style="display: none;"><br> You must pick a target before adding more fields.</span>
           <p><span class="last-data-field"></span></p>
           <%= hidden_field_tag 'last_path[]', "", :class => "last_path" %>
         </div>

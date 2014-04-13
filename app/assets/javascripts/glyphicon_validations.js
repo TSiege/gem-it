@@ -1,9 +1,12 @@
 $( document ).ready(function() {
   glyphiconPlusListener();
 });
-  var regEx = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/
 
 // methods for validating and adding form fields
+
+function hideAllErrorMessages() {
+  $(".error-message").hide();
+}
 
 function addFormFields() {
   $("div#last-gem-method").removeAttr("id")
@@ -34,39 +37,53 @@ function addFormFields() {
 }
 
 function hiddenFieldValidator(){
-  if ($("#last-gem-method input[type='hidden']").val() < 1) {
-    $("#hidden-input-error").show();
+  if ($("#last-gem-method input[type='hidden']").val() == "") {
+    $("input#last-method-field").siblings("#hidden-input-error").show();
   }
   else {
-    $("#hidden-input-error").remove();
+    $("input#last-method-field").siblings("#hidden-input-error").hide();
     addFormFields();
   }
 }
 
-function methodNameUniqueness() {
-  var $lastMethodName = $("input[name='method_name[]']").last();
-  if ($("input#last-method-field").val().length < 3) {
-    $("span#method-name-uniqueness-error").show();
+function methodNameUnique() {
+  var $methodNames = $("input[name='method_name[]']");
+  var methodNamesLength = ($methodNames.length - 1)
+  var $lastMethodName = $methodNames.last();
+  var valuesArr = $.map($methodNames, function(n,i){
+    return [n.value.toLowerCase()];
+  }).reverse();
+  var notUnique = (function() {
+    return $.inArray($lastMethodName.val(), valuesArr, 1) > -1;
+  }());
+  return notUnique
+}
+
+function methodNameUniquenessOnGlyphicon (){
+  var notUniquetest = methodNameUnique();
+  if (notUniquetest) {
+    hideAllErrorMessages();
+    $("input#last-method-field").siblings("span#method-name-uniqueness-error").show();
   }
   else {
-    $("span#method-name-uniqueness-error").remove();
+    $("input#last-method-field").siblings("span#method-name-uniqueness-error").hide();
     hiddenFieldValidator();
   }
 }
 
-function methodNameLengthValidation() {
+function methodNameLengthValidationOnGlyphicon() {
   if ($("input#last-method-field").val().length < 3) {
-    $("span#method-name-error").show();
+    hideAllErrorMessages();
+    $("input#last-method-field").siblings("span#method-name-error").show();
   }
   else {
-    $("span#method-name-error").remove();
-    addFormFields();
-    // methodNameUniqueness();
+    $("input#last-method-field").siblings("span#method-name-error").hide();
+    methodNameUniquenessOnGlyphicon();
   }
 }
 
 function glyphiconPlusListener() {
   $(".glyphicon-plus").on("click", function(e){
-    methodNameLengthValidation();
+    methodNameLengthValidationOnGlyphicon();
   });
 }
