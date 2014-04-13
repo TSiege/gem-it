@@ -1,42 +1,42 @@
 <div id="gem-form-column">
   <h2 id="info-check">Grab your data.<span id="data"></span></h2>
     
-    <%= form_tag create_gem_path, {remote: true, role: "form"} do %>
+  <%= form_tag create_gem_path, {remote: true, role: "form"} do %>
 
-      <div class="form-group">
+    <div class="form-group">
 
-        <div id="gem-methods">
-          <div id="last-gem-method">
-            <%= label_tag "method_name[]", "Method Name" %>
-            <span class="error-message" id="method-name-error" style="display: none;"><br> A Method Name Can't be less than 3 characters.</span>
-            <%= text_field_tag "method_name[]", "", :class => "form-control", id: "last-method-field" %><br>
-            <%= label_tag "method-data", "Is this the data you want?" %>
-            <p><span class="last-data-field"></span></p>
-            <%= hidden_field_tag 'last_path[]', "", :class => "last_path" %>
-          </div>
-          <span class="glyphicon glyphicon-plus"> Get More Data</span><br><br>
-          <div class="panel-footer">
-            <button type="button" class="btn btn-grey btn-lg btn-block switch-to-gem-it">Next</button>
-          </div>
+      <div id="gem-methods">
+        <div id="last-gem-method">
+          <%= label_tag "method_name[]", "Method Name" %>
+          <span class="error-message" id="method-name-error" style="display: none;"><br>A method name can't be less than 3 characters.</span>
+          <%= text_field_tag "method_name[]", "", :class => "form-control", id: "last-method-field" %><br>
+          <%= label_tag "method-data", "Is this the data you want?" %>
+          <p><span class="last-data-field"></span></p>
+          <%= hidden_field_tag 'last_path[]', "", :class => "last_path" %>
         </div>
-
-        <div id="gem-info">
-          <%= label_tag :repo_name, "Repo Name" %>
-          <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
-          <%= label_tag :gem_name, "Gem Name" %>
-          <%= text_field_tag :gem_name, "", :class => "form-control" %><br>
-          <%= label_tag :description, "Description" %>
-          <%= text_field_tag :description, "", :class => "form-control" %><br>
-          <%= label_tag :email, "Email" %>
-          <%= text_field_tag :email, "", :class => "form-control" %><br>
-          <%= hidden_field_tag :url, @page %>
-          <div class="panel-footer">
-            <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block gem-it-btn" %>
-          </div>
+        <span class="glyphicon glyphicon-plus"> Get More Data</span><br><br>
+        <div class="panel-footer">
+          <button type="button" class="btn btn-grey btn-lg btn-block switch-to-gem-it">Next</button>
         </div>
-
       </div>
-    <% end %>
+
+      <div id="gem-info">
+        <%= label_tag :repo_name, "Repo Name" %>
+        <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
+        <%= label_tag :gem_name, "Gem Name" %>
+        <%= text_field_tag :gem_name, "", :class => "form-control" %><br>
+        <%= label_tag :description, "Description" %>
+        <%= text_field_tag :description, "", :class => "form-control" %><br>
+        <%= label_tag :email, "Email" %>
+        <%= text_field_tag :email, "", :class => "form-control" %><br>
+        <%= hidden_field_tag :url, @page %>
+        <div class="panel-footer">
+          <%= submit_tag "Gem It", :class => "btn btn-grey btn-lg btn-block gem-it-btn" %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
 
 </div>
 
