@@ -154,3 +154,19 @@ div.gem-form-tabs.col-right {
 .error-message {
   color: #d44950;
 }
+
+.modal-title#myModalLabel {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.modal-body {
+  font-family: 'Lato', sans-serif;
+}
+
+.modal-body code {
+  color: #e31b23;
+}
+
+#close-modal {
+  border-radius: 0;
+}
