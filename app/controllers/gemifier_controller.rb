@@ -22,31 +22,34 @@ class GemifierController < ApplicationController
 
   def create_side_column
     respond_to do |f|
-      f.html {render :right_side_column}
       f.js
     end
   end
 
   def create
-    client = Octokit::Client.new(:access_token => session[:token])
-    repo = client.create_repo(params["repo_name"], {description: params[:description], :private => false})
-    values = create_hash(params[:method_name], params[:last_path])
-    gemifier = Gemifier.new(
+    @client = Octokit::Client.new(:access_token => session[:token])
+    @repo = @client.create_repo(params["repo_name"], {description: params[:description], :private => false})
+    @values = create_hash(params[:method_name], params[:last_path])
+    @gemifier = Gemifier.new(
       params[:gem_name], 
-      client.user.login, 
+      @client.user.login, 
       params['url'],
       params['email'], 
-      client, 
-      values, 
+      @client, 
+      @values, 
       params[:description],
-      repo
+      @repo
     )
 
-    gemifier.scaffold
-    
+    @gem_name = params[:gem_name]
+    @gemifier.scaffold
     # reset_session
-    flash[:notice] = "#{params["repo_name"]} was successfully gemified"
-    redirect_to "/"
+    respond_to do |f|
+      f.html {render :success_modal}
+      f.js
+    end
+    # flash[:notice] = "#{params["repo_name"]} was successfully gemified"
+    # redirect_to "/"
   end
 
   def omniauth
