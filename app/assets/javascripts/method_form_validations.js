@@ -44,8 +44,17 @@ function hiddenFieldValidator(){
 }
 
 function methodNameUniqueness() {
-  var $lastMethodName = $("input[name='method_name[]']").last();
-  if ($("input#last-method-field").val().length < 3) {
+  var $methodNames = $("input[name='method_name[]']");
+  var methodNamesLength = ($methodNames.length - 1)
+  var $lastMethodName = $methodNames.last();
+  var valuesArr = $.map($methodNames, function(n,i){
+    return [n.value.toLowerCase()];
+  }).reverse();
+  var notUnique = (function() {
+    return $.inArray($lastMethodName.val(), valuesArr, 1) > -1;
+  }());
+  if (notUnique) {
+    console.log("not unique")
     $("span#method-name-uniqueness-error").show();
   }
   else {
@@ -60,8 +69,7 @@ function methodNameLengthValidation() {
   }
   else {
     $("span#method-name-error").remove();
-    addFormFields();
-    // methodNameUniqueness();
+    methodNameUniqueness();
   }
 }
 
