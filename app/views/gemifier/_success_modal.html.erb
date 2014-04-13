@@ -1,0 +1,26 @@
+<!-- Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><%= @gemifier.repo.name %> was successfully created!</h4>
+      </div>
+      <div class="modal-body">
+        You can find <%= @gem_name %> on Github at <%= link_to @gemifier.repo.html_url, @gemifier.repo.html_url %>. To get started using <%= @gem_name %>, just type:
+        </br>
+        </br>
+          <code> gem '<%= @gem_name %>', :git => '<%= @gemifier.repo.ssh_url %>' </code>
+        </br>
+        </br>
+        This will install <%= @gem_name %>, giving you access to both its command line runner (just type <%= @gem_name %> in your Terminal) and the ability to require it within your Ruby applications.
+        </br>
+        </br>
+        Want to do learn more about gems? Find out how to share your gem with the Ruby community by publishing to <%= link_to 'RubyGems', 'http://guides.rubygems.org/publishing/' %> and how to <%= link_to 'create your own gem from scratch', 'http://guides.rubygems.org/publishing/' %>.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

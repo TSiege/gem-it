@@ -6,7 +6,7 @@ class Gemifier
 
   attr_accessor :gem_name, :gem_const, :author, :url, :website,
                 :author_email, :bin_dir, :lib_dir, :gemfiles_dir, 
-                :client, :values, :description, :repo
+                :client, :values, :description, :repo, :gem_file_name
 
   def initialize(name, author, website, author_email, client, values, description, repo)
     @gem_name = name
@@ -15,7 +15,8 @@ class Gemifier
     @values = values
     # @node_path_fallback = node_path.gsub(/tbody\[.\]/,"")
     @author_email = author_email
-    @gem_const = gem_name.split("_").collect(&:titleize).join()
+    @gem_const = gem_name.split(/_| |-/).collect(&:titleize).join()
+    @gem_file_name = name.parameterize.gsub('-','_')
     @client = client
     @description = description
     @repo = repo
@@ -23,7 +24,7 @@ class Gemifier
 
   def scaffold
     
-    # Dir.mktmpdir(gem_name, "/var/tmp") do |dir|
+    # Dir.mktmpdir(gem_file_name, "/var/tmp") do |dir|
     
       make_dirs
       
@@ -54,18 +55,18 @@ class Gemifier
   private
 
   def make_dirs
-    @bin_dir = "#{gem_name}/bin"
-    @lib_dir = "#{gem_name}/lib"
-    @gemfiles_dir = "#{lib_dir}/#{gem_name}"
-    Dir.mkdir(gem_name)
+    @bin_dir = "#{gem_file_name}/bin"
+    @lib_dir = "#{gem_file_name}/lib"
+    @gemfiles_dir = "#{lib_dir}/#{gem_file_name}"
+    Dir.mkdir(gem_file_name)
     Dir.mkdir(lib_dir)
     Dir.mkdir(gemfiles_dir)
     Dir.mkdir(bin_dir, 0777)
   end
 
   def finalize_build
-    Dir.chdir(gem_name)
-    %x(gem build #{gem_name}.gemspec)
+    Dir.chdir(gem_file_name)
+    %x(gem build #{gem_file_name}.gemspec)
     push_to_github
     Dir.chdir('..')
   end

@@ -36,7 +36,7 @@ end
     end
 
     def build_model_rb
-      module_name = File.join(self.gemfiles_dir, "#{self.gem_name}.rb")
+      module_name = File.join(self.gemfiles_dir, "#{self.gem_file_name}.rb")
       module_file = File.new(module_name, "w")
       module_file.puts(<<-EOT)
 
@@ -88,13 +88,13 @@ end
     end
 
     def build_runner 
-      bin_name = File.join(self.bin_dir, self.gem_name)
+      bin_name = File.join(self.bin_dir, self.gem_file_name)
       bin = File.new(bin_name, "w")
       bin.puts(<<-EOT)
 
 #!/usr/bin/env ruby
 
-require '#{self.gem_name}'
+require '#{self.gem_file_name}'
 
 data = #{self.gem_const}::Magic.new.call
 
@@ -111,7 +111,7 @@ end
 
     def build_gitignore
       # Create .gitignore
-      gitignore_name = File.join(self.gem_name, '.gitignore')
+      gitignore_name = File.join(self.gem_file_name, '.gitignore')
       gitignore = File.new(gitignore_name, "w")
       gitignore.puts(<<-EOT)
 
@@ -129,8 +129,8 @@ lib/bundler/man
 pkg
 rdoc
 spec/reports
-#{self.gem_name}/tmp
-#{self.gem_name}/version_tmp
+#{self.gem_file_name}/tmp
+#{self.gem_file_name}/version_tmp
 tmp
 
       EOT
@@ -140,13 +140,13 @@ tmp
 
     def build_gemfile
       # Create Gemfile
-      gemfile_name = File.join(self.gem_name, 'Gemfile')
+      gemfile_name = File.join(self.gem_file_name, 'Gemfile')
       gemfile = File.new(gemfile_name, "w")
       gemfile.puts(<<-EOT)
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in #{self.gem_const}.gemspec
+# Specify your gem's dependencies in #{self.gem_file_name}.gemspec
 gemspec
 
       EOT
@@ -156,7 +156,7 @@ gemspec
 
     def build_license 
       # Create License.txt
-      license_name = File.join(self.gem_name, 'License.txt')
+      license_name = File.join(self.gem_file_name, 'License.txt')
       license = File.new(license_name, "w")
       license.puts(<<-EOT)
 
@@ -193,7 +193,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     def build_rakefile
       # Create Rakefile
-      rakefile_name = File.join(self.gem_name, 'Rakefile')
+      rakefile_name = File.join(self.gem_file_name, 'Rakefile')
       rakefile = File.new(rakefile_name, "w")
       rakefile.puts(<<-EOT)
 
@@ -206,7 +206,7 @@ require "bundler/gem_tasks"
 
     def build_readme
       # Create README.md
-      readme_name = File.join(self.gem_name, 'README.md')
+      readme_name = File.join(self.gem_file_name, 'README.md')
       readme = File.new(readme_name, "w")
       readme.puts(<<-EOT)
 
@@ -218,7 +218,7 @@ require "bundler/gem_tasks"
 
 Add this line to your application's Gemfile:
 
-    gem '#{self.gem_name}'
+    gem '#{self.gem_file_name}'
 
 And then execute:
 
@@ -226,16 +226,16 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install #{self.gem_name}
+    $ gem install #{self.gem_file_name}
 
 ## Usage
 
-Use #{self.gem_name} in your command line to print out the data whenever you want.
+Use #{self.gem_file_name} in your command line to print out the data whenever you want.
 Or include it in your app to return an object with the data included. 
 
 ### commandline 
 
-      $ #{gem_name}
+      $ #{gem_file_name}
 
 ### API 
   
@@ -246,18 +246,18 @@ Or include it in your app to return an object with the data included.
     end
 
     def build_gemspec 
-      # Create #{gem_name}.gemspec
-      gemspec_name = File.join(self.gem_name, "#{self.gem_name}.gemspec")
+      # Create #{gem_file_name}.gemspec
+      gemspec_name = File.join(self.gem_file_name, "#{self.gem_file_name}.gemspec")
       gemspec = File.new(gemspec_name, "w")
       gemspec.puts(<<-EOT)
 
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require '#{self.gem_name}/version'
+require '#{self.gem_file_name}/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "#{self.gem_name}"
+  spec.name          = "#{self.gem_file_name}"
   spec.version       = #{self.gem_const}::VERSION
   spec.authors       = ["#{self.author}"]
   spec.email         = ["#{self.author_email}"]
@@ -267,7 +267,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.files         = Dir['{bin/*,lib/**/*}'] +
-                        %w(#{self.gem_name}.gemspec Rakefile README.md) 
+                        %w(#{self.gem_file_name}.gemspec Rakefile README.md) 
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
@@ -285,13 +285,13 @@ end
 
     def build_env
       # Create lib/gem.rb
-      gem_file_name = File.join(self.lib_dir, "#{self.gem_name}.rb")
+      gem_file_name = File.join(self.lib_dir, "#{self.gem_file_name}.rb")
       gem = File.new(gem_file_name, "w")
       gem.puts(<<-EOT)
 
 require "open-uri"
 require "nokogiri"
-Dir[File.dirname(__FILE__) + '/#{self.gem_name}/*.rb'].each do |file|
+Dir[File.dirname(__FILE__) + '/#{self.gem_file_name}/*.rb'].each do |file|
   require file
 end
 

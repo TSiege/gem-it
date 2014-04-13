@@ -7,7 +7,7 @@ function addListenersToIframe() {
   $("iframe").contents().find("html").each(function() {
     $(this).bind("click", function(e) { 
       e.preventDefault();
-      var t = e.target.innerHTML;
+      var t = e.target.innerText || e.target.textContent;
       var p = getPathTo(e.target)
       $("#last-gem-method .last-data-field").text(t);
       $("#last-gem-method .last_path").val(p);
