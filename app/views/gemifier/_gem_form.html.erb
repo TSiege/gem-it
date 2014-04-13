@@ -8,7 +8,8 @@
         <div id="gem-methods">
           <div id="last-gem-method">
             <%= label_tag "method_name[]", "Method Name" %>
-            <%= text_field_tag "method_name[]", "", :class => "form-control last-method-field" %><br>
+            <span class="error-message" id="method-name-error" style="display: none;"><br> A Method Name Can't be less than 3 characters.</span>
+            <%= text_field_tag "method_name[]", "", :class => "form-control", id: "last-method-field" %><br>
             <%= label_tag "method-data", "Is this the data you want?" %>
             <p><span class="last-data-field"></span></p>
             <%= hidden_field_tag 'last_path[]', "", :class => "last_path" %>
