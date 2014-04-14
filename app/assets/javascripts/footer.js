@@ -6,7 +6,7 @@ function reveal() {
   setTimeout(function() {
     $("#frame-bg").css({
       "position": "static",
-      "transform": "translateY(-28px)"
+      "transform": "translateY(-15px)"
     });
     $("#head").hide();
     $("#foot").removeClass("footer-down");

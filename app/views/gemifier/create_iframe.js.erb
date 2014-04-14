@@ -2,6 +2,22 @@ $("iframe").attr("src", "<%= remove_public(@iframe_file.file.path) %>")
 
 $('iframe').load(function() {
   reveal();
+  $("#nav-form").addClass("show-form");
 });
 
-$("input#url").val("<%= @iframe_file.page %>")
+console.log("hey");
+
+
+
+$("#gem-form-column").parent().html("<%= j render 'gem_form' %>");
+$("#gem-form-column").show();
+
+$("input#url").val("<%= @iframe_file.page %>");
+
+
+
+glyphiconPlusListener();
+switchToGemIt();
+switchToGetIt();
+validatesGemItFields();
+repoNameFailure();

@@ -10,11 +10,11 @@
         You can find <%= @gem_name %> on Github at <%= link_to @gemifier.repo.html_url, @gemifier.repo.html_url %>. To get started using <%= @gem_name %>, just type:
         </br>
         </br>
-          <code> git clone <%= @repo.html_url %>.git </code>
+          <code> git clone <%= @gemifier.repo.html_url %>.git </code>
           </br>
-          <code> cd <%= @repo.name %> && gem build <%= @repo.name %>.gemspec </code>
+          <code> cd <%= @gemifier.repo.name %> </code>
           </br>
-          <code> sudo gem install <%= @repo.name %> </code>
+          <code> sudo gem install <%= @gemifier.repo.name %> </code>
         </br>
         </br>
         This will install <%= @gem_name %>, giving you access to both its command line runner (just type <%= @gem_name %> in your Terminal) and the ability to require it within your Ruby applications. To require <%= @gem_name %> in a Ruby application, use:

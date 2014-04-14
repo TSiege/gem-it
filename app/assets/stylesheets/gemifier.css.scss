@@ -31,7 +31,7 @@ iframe {
 .gemify-navbar-text {
   float: right;
   position: relative;
-  top: -38px;
+  top: 20px;
 }
 
 #gemify-navbar {
@@ -58,7 +58,7 @@ iframe {
 
 #frame-bg {
   position: absolute;
-  top: 85px;
+  top: 83px;
   width: 100%;
   z-index: -1;
 
@@ -161,6 +161,47 @@ div.gem-form-tabs.col-right {
 
 .modal-body {
   font-family: 'Lato', sans-serif;
+}
+
+#gemify-logo {
+  display: inline-block;
+  width: 30%;
+}
+
+#nav-form {
+  display: inline-block;
+  width: 30%;
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+     -moz-transition: opacity 1s;
+          transition: opacity 1s;
+  -webkit-transition-delay: 1s;        
+     -moz-transition-delay: 1s;        
+          transition-delay: 1s;        
+
+  &.show-form {
+    opacity: 1;
+  }
+  
+  input[type='text'] {
+    float: left; 
+    width: 75%;
+
+  }
+
+  input[type='submit'] { 
+    float: right; 
+  }
+
+  .btn {
+    float: right;
+    border-radius: 0px; 
+    width: 25%;
+  }
+}
+
+#head {
+  padding: 20px;
 }
 
 .modal-body code {
