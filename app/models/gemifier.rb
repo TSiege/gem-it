@@ -25,9 +25,11 @@ class Gemifier
   def scaffold
     
     # Dir.mktmpdir(gem_file_name, "/var/tmp") do |dir|
-    
+
+      tmp_dir_name = Dir.mktmpdir
+      Dir.chdir(tmp_dir_name)
       make_dirs
-      
+          
       build_info_rb  
       build_model_rb
       build_runner
@@ -48,10 +50,6 @@ class Gemifier
 
   end
 
-  def destroy_directory 
-
-  end
-
   private
 
   def make_dirs
@@ -68,6 +66,7 @@ class Gemifier
     Dir.chdir(gem_file_name)
     %x(gem build #{gem_file_name}.gemspec)
     push_to_github
+    Dir.chdir('..')
     Dir.chdir('..')
   end
 
