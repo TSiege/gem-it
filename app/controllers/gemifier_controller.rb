@@ -1,4 +1,6 @@
 class GemifierController < ApplicationController
+  after_action :remove_temp, :only => [:create_iframe]
+
   def index
     @file = File.new("app/views/layouts/application.html.erb")
     # render "omniauth_success" if session[:token]
@@ -9,7 +11,7 @@ class GemifierController < ApplicationController
     @page = "http://#{@page}" if @page !~ /http/
     @doc = open(@page)
     digest = Digest::MD5.hexdigest(@page)
-    @file = File.new("public/tmp/#{digest}.html", 'w')
+    @file = File.new("public/tmp/#{digest}.html")
     @content = @doc.read.gsub(/<script[^>]*>[^<]*<\/script>/, "<script></script>")
     @content = @content.gsub(/<meta[^[Xx]]*[Xx]-[Ff][rame]*[-][Oo][ptions]*[^>]*\/>/, "")
     @file.write(@content)
@@ -59,6 +61,8 @@ class GemifierController < ApplicationController
   end
 
   private
+
+
 
   def create_hash(labels, node_paths)
     labels.collect.with_index do |label, i|
