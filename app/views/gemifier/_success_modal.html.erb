@@ -10,7 +10,7 @@
         You can find <%= @gem_name %> on Github at <%= link_to @gemifier.repo.html_url, @gemifier.repo.html_url %>. To get started using <%= @gem_name %>, just type:
         </br>
         </br>
-          <code> gem '<%= @gem_name %>', :git => '<%= @gemifier.repo.ssh_url %>' </code>
+          <code> gem '<%= @gem_name %>', :git => '<%= @gemifier.repo.git_url %>' </code>
         </br>
         </br>
         This will install <%= @gem_name %>, giving you access to both its command line runner (just type <%= @gem_name %> in your Terminal) and the ability to require it within your Ruby applications.
