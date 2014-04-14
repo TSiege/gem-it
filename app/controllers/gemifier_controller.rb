@@ -43,19 +43,4 @@ class GemifierController < ApplicationController
     redirect_to "/"
   end
 
-<<<<<<< HEAD
-  private
-
-
-
-  def create_hash(labels, node_paths)
-    labels.collect.with_index do |label, i|
-      if !label.empty? && !node_paths[i].empty?
-        {label => node_paths[i]}
-      end  
-    end 
-  end
-    
-=======
->>>>>>> 3129c70d0d2eea2f855df12c1f4ca05eb4375078
 end
