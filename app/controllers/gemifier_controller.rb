@@ -28,13 +28,14 @@ class GemifierController < ApplicationController
 
   def create
     @client = Octokit::Client.new(:access_token => session[:token])
-    @repo = @client.create_repo(params["repo_name"], {description: params[:description], :private => false})
+    raise "error" if @client.repository?(params[:repo_name])
+    @repo = @client.create_repo(params[:repo_name], {description: params[:description], :private => false})
     @values = create_hash(params[:method_name], params[:last_path])
     @gemifier = Gemifier.new(
       params[:gem_name], 
       @client.user.login, 
-      params['url'],
-      params['email'], 
+      params[:url],
+      params[:email], 
       @client, 
       @values, 
       params[:description],
@@ -48,7 +49,7 @@ class GemifierController < ApplicationController
       f.html {render :success_modal}
       f.js
     end
-    # flash[:notice] = "#{params["repo_name"]} was successfully gemified"
+    # flash[:notice] = "#{params[:repo_name]} was successfully gemified"
     # redirect_to "/"
   end
 

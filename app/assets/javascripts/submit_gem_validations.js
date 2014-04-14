@@ -1,11 +1,10 @@
 $( document ).ready(function() {
-  // validateGemItInputs();
+  validatesGemItFields();
+  repoNameFailure();
 });
 
 function validatesGemItFields() {
   $(".gem-it-btn").click(function (e) {
-    e.preventDefault();
-    debugger;
     var $allInputs = $("input#repo_name, input#gem_name, input#description, input#email"),
       $allErrors = $("#hidden-repo-error, #hidden-gem-error, #hidden-description-error, #hidden-email-error"),
       regEx = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/,
@@ -15,9 +14,11 @@ function validatesGemItFields() {
         function(description){ return description.value.length < 15; },
         function(email){ return !regEx.test(email.value); }
       ],
-      i = 0;
+      i = 0,
+      trigger = 0;
 
     $allErrors.hide();
+    $("#hidden-repo-name-error").hide();
     
     for (i; i < 4; i++) {
       if (validations[i]($allInputs[i])) {
@@ -25,31 +26,17 @@ function validatesGemItFields() {
       }
       else { 
         $allErrors[i].style.display = "none";
+        trigger++;
+        if (trigger == 4) {
+          $("#gem-it-form").submit();
+        }
       }
     }
   });
 }
 
-// function validateGemItInputs() {
-//   $(".gem-it-btn").click(function (e) {
-//     console.log("clicked");
-//     e.preventDefault();
-//     debugger;
-//     var $allInputs = $("input#repo_name, input#gem_name, input#description, input#email"),
-//       $allErrors = $("#hidden-repo-error, #hidden-gem-error, #hidden-description-error, #hidden-email-error"),
-//       regEx = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/,
-//     validEmail = regEx.test($("input#email"));
-
-//     $allErrors.hide();
-
-//     if ($allInputs[0].value.length < 4) {
-//       $("#hidden-repo-error").show();
-//     } else if ($allInputs[1].value.length < 4) {
-//       $("#hidden-gem-error").show();
-//     } else if ($allInputs[2].value.length < 15) {
-//       $("#hidden-description-error").show();
-//     } else if (!validEmail) {
-//       $("#hidden-email-error").show();
-//     }
-//   });
-// }
+function repoNameFailure(){
+  $("#gem-it-form").bind("ajax:error", function(data, status, xhr){
+    $("#hidden-repo-name-error").show();
+  })
+}
