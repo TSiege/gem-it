@@ -47,13 +47,13 @@ module #{gem_const}
     attr_accessor :source, :doc  
 
     def initialize
-      @source = "#{self.website}"
+      @source = "#{self.target_website}"
     end
 
     def call
       @doc = Nokogiri::HTML(open(self.source))
       
-      result = #{self.values}.collect do |v| 
+      result = #{self.method_names_and_node_paths}.collect do |v| 
         set_value(v)
       end
       
