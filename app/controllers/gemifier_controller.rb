@@ -1,5 +1,4 @@
 class GemifierController < ApplicationController
-  after_action :remove_temp, :only => [:create_iframe]
 
   def index
     @file = File.new("app/views/layouts/application.html.erb")

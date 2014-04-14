@@ -27,8 +27,10 @@ class Gemifier
 
   def scaffold
     
-    # Dir.mktmpdir(gem_file_name, "/var/tmp") do |dir|
+    Dir.mktmpdir do |tmpdir|
     
+      @tmpdir = tmpdir
+
       make_dirs
       
       build_info_rb  
@@ -47,7 +49,7 @@ class Gemifier
 
     # repo.create
 
-    # end  
+    end  
 
   end
 
@@ -58,20 +60,20 @@ class Gemifier
   private
 
   def make_dirs
-    @bin_dir = "#{gem_file_name}/bin"
-    @lib_dir = "#{gem_file_name}/lib"
+    @bin_dir = "#{@tmpdir}/bin"
+    @lib_dir = "#{@tmpdir}/lib"
     @gemfiles_dir = "#{lib_dir}/#{gem_file_name}"
-    Dir.mkdir(gem_file_name)
     Dir.mkdir(lib_dir)
     Dir.mkdir(gemfiles_dir)
     Dir.mkdir(bin_dir, 0777)
   end
 
   def finalize_build
-    Dir.chdir(gem_file_name)
+    app_path = Dir.pwd
+    Dir.chdir(@tmpdir)
     %x(gem build #{gem_file_name}.gemspec)
     push_to_github
-    Dir.chdir('..')
+    Dir.chdir(app_path)
   end
 
   def push_to_github

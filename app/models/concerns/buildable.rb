@@ -111,11 +111,10 @@ end
 
     def build_gitignore
       # Create .gitignore
-      gitignore_name = File.join(self.gem_file_name, '.gitignore')
+      gitignore_name = File.join(@tmpdir, '.gitignore')
       gitignore = File.new(gitignore_name, "w")
       gitignore.puts(<<-EOT)
 
-*.gem
 *.rbc
 .bundle
 .config
@@ -140,7 +139,7 @@ tmp
 
     def build_gemfile
       # Create Gemfile
-      gemfile_name = File.join(self.gem_file_name, 'Gemfile')
+      gemfile_name = File.join(@tmpdir, 'Gemfile')
       gemfile = File.new(gemfile_name, "w")
       gemfile.puts(<<-EOT)
 
@@ -156,7 +155,7 @@ gemspec
 
     def build_license 
       # Create License.txt
-      license_name = File.join(self.gem_file_name, 'License.txt')
+      license_name = File.join(@tmpdir, 'License.txt')
       license = File.new(license_name, "w")
       license.puts(<<-EOT)
 
@@ -193,7 +192,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     def build_rakefile
       # Create Rakefile
-      rakefile_name = File.join(self.gem_file_name, 'Rakefile')
+      rakefile_name = File.join(@tmpdir, 'Rakefile')
       rakefile = File.new(rakefile_name, "w")
       rakefile.puts(<<-EOT)
 
@@ -206,7 +205,7 @@ require "bundler/gem_tasks"
 
     def build_readme
       # Create README.md
-      readme_name = File.join(self.gem_file_name, 'README.md')
+      readme_name = File.join(@tmpdir, 'README.md')
       readme = File.new(readme_name, "w")
       readme.puts(<<-EOT)
 
@@ -247,7 +246,7 @@ Or include it in your app to return an object with the data included.
 
     def build_gemspec 
       # Create #{gem_file_name}.gemspec
-      gemspec_name = File.join(self.gem_file_name, "#{self.gem_file_name}.gemspec")
+      gemspec_name = File.join(@tmpdir, "#{self.gem_file_name}.gemspec")
       gemspec = File.new(gemspec_name, "w")
       gemspec.puts(<<-EOT)
 
