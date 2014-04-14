@@ -24,12 +24,16 @@
 
       <div id="gem-info">
         <%= label_tag :repo_name, "Repo Name" %>
+        <span class="error-message" id="hidden-repo-error" style="display: none;"><br> Your repo must be longer than 3 characters.</span>
         <%= text_field_tag :repo_name, "", :class => "form-control" %><br>
         <%= label_tag :gem_name, "Gem Name" %>
+        <span class="error-message" id="hidden-gem-error" style="display: none;"><br> Your gem must be longer than 3 characters.</span>
         <%= text_field_tag :gem_name, "", :class => "form-control" %><br>
         <%= label_tag :description, "Description" %>
+        <span class="error-message" id="hidden-description-error" style="display: none;"><br> Descriptions must be at least 15 characters long.</span>
         <%= text_field_tag :description, "", :class => "form-control" %><br>
         <%= label_tag :email, "Email" %>
+        <span class="error-message" id="hidden-email-error" style="display: none;"><br> Not a valid email.</span>
         <%= text_field_tag :email, "", :class => "form-control" %><br>
         <%= hidden_field_tag :url, @page %>
         <div class="panel-footer">

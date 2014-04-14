@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-  // switchFormTabs();
   switchToGemIt();
   switchToGetIt();
 });
@@ -36,15 +35,3 @@ function switchToGemItFunctions() {
   $("#gem-info").show();
   $("#gem-methods").hide();
 }
-
-// function switchFormTabs() {
-//   $("ul.list-inline li").click(function(){
-//     if (methodDataBlank && methodNameBlank) {
-//       $("li.active").removeClass();
-//       $(this).addClass("active");
-//     }
-//     else {
-//       methodNameLengthValidationOnNextOrGemIt();
-//     }
-//   });
-// }
