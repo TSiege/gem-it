@@ -67,7 +67,6 @@ class Gemifier
     %x(gem build #{gem_file_name}.gemspec)
     push_to_github
     Dir.chdir('..')
-    Dir.chdir('..')
   end
 
   def push_to_github
