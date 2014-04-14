@@ -4,22 +4,25 @@ class Gemifier
 
   include Buildable::InstanceMethods
 
-  attr_accessor :gem_name, :gem_const, :author, :url, :website,
+  attr_accessor :gem_name, :gem_const, :author, :target_website,
                 :author_email, :bin_dir, :lib_dir, :gemfiles_dir, 
-                :client, :values, :description, :repo, :gem_file_name
+                :client, :method_names_and_node_paths, :description, :repo, :gem_file_name
 
-  def initialize(name, author, website, author_email, client, values, description, repo)
-    @gem_name = name
-    @author = author
-    @website = website
-    @values = values
-    # @node_path_fallback = node_path.gsub(/tbody\[.\]/,"")
-    @author_email = author_email
-    @gem_const = gem_name.split(/_| |-/).collect(&:titleize).join()
-    @gem_file_name = name.parameterize.gsub('-','_')
+  def initialize(client, params)
     @client = client
-    @description = description
-    @repo = repo
+    @repo = client.create_repo(params[:repo_name], {description: params[:description], :private => false})
+    
+    @author = client.user.login
+    @author_email = params[:email]
+    @description = params[:description]
+    @target_website = params[:url]
+
+    @gem_name = params[:gem_name]
+    @gem_const = gem_name.split(/_| |-/).collect(&:titleize).join()
+    @gem_file_name = gem_name.parameterize.gsub('-','_')
+    
+    @method_names_and_node_paths = create_hash(params[:method_name], params[:last_path])
+    # @node_path_fallback = node_path.gsub(/tbody\[.\]/,"")
   end
 
   def scaffold
@@ -77,6 +80,14 @@ class Gemifier
     %x(git commit -m "first commit")
     %x(git remote add origin #{repo.ssh_url})
     %x(git push -u origin master)
+  end
+
+  def create_hash(labels, node_paths)
+    labels.collect.with_index do |label, i|
+      if !label.empty? && !node_paths[i].empty?
+        {label => node_paths[i]}
+      end  
+    end 
   end
 
 end
