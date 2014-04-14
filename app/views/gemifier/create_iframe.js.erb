@@ -1,7 +1,7 @@
-$("iframe").attr("src", "<%= remove_public(@file.path) %>")
+$("iframe").attr("src", "<%= remove_public(@iframe_file.file.path) %>")
 
 $('iframe').load(function() {
   reveal();
 });
 
-$("input#url").val("<%= @page %>")
+$("input#url").val("<%= @iframe_file.page %>")

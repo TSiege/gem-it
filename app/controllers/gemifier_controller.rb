@@ -1,20 +1,13 @@
 class GemifierController < ApplicationController
   def index
     @file = File.new("app/views/layouts/application.html.erb")
-    # render "omniauth_success" if session[:token]
+    @session = session[:token] ? true : false
   end
 
   def create_iframe
-    # @iframe = IframeContainer.new(params)
-    # @iframe.to_s
-    @page = params[:website] !~ /http/ ? "http://#{params[:website]}" : params[:website] 
-    @doc = open(@page)
-    digest = Digest::MD5.hexdigest(@page)
-    @file = File.new("public/tmp/#{digest}.html", 'w')
-    @content = @doc.read.gsub(/<script[^>]*>[^<]*<\/script>/, "<script></script>")
-    @content = @content.gsub(/<meta[^[Xx]]*[Xx]-[Ff][rame]*[-][Oo][ptions]*[^>]*\/>/, "")
-    @file.write(@content)
-    @file.close
+    @iframe_file = Concerns::IframeContentCreator.new(params)
+    @iframe_file.create_iframe_file
+
     respond_to do |f|
       f.html {render :page}
       f.js
