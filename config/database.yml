@@ -26,3 +26,6 @@ test:
 # Example:
 #   sqlite3://myuser:mypass@localhost/full/path/to/somedatabase
 #
+production:
+  <<: *default
+  database: db/production.sqlite3

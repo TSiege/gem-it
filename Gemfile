@@ -57,6 +57,7 @@ end
 group :production do
   gem "google-analytics-rails"
   gem "rails_12factor"
+  gem "sqlite3"
 end
 
 gem "omniauth"
