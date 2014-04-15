@@ -227,18 +227,21 @@ Or install it yourself as:
 
     $ gem install #{self.gem_file_name}
 
-## Usage
+## Command Line Usage
 
 Use #{self.gem_file_name} in your command line to print out the data whenever you want.
-Or include it in your app to return an object with the data included. 
 
-### commandline 
+    $ #{self.gem_file_name}
 
-      $ #{gem_file_name}
+## Ruby Usage
 
-### API 
-  
-  
+Require #{self.gem_file_name} in your app to return an object with the data included. 
+
+    $ require '#{self.gem_file_name}'
+
+Alternatively, require it directly from Github.
+
+    $ gem '#{self.gem_file_name}', :git => 'git://github.com/pat-whitrock/nascar.git'
 
       EOT
       readme.close
