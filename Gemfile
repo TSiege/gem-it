@@ -34,6 +34,7 @@ gem 'whenever'
 
 # Use Capistrano for deployment
 gem 'capistrano', "~> 2.x"
+gem 'net-ssh', "2.7"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

@@ -5,7 +5,7 @@ require 'bundler/capistrano' # for bundler support
 
 
 set :application, "gemit"
-set :repository,  "https://github.com/TSiege/gemify"
+set :repository,  "git@github.com:TSiege/gemify.git"
 
 set :user, 'tristan'
 set :deploy_to, "/home/#{ user }/#{ application }"
