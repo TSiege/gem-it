@@ -9,7 +9,8 @@ class Gemifier
   def initialize(client, params)
     @client = client
     @repo = client.create_repo(params[:repo_name], {description: params[:description], :private => false})
-    
+    client.add_collaborator(@repo.full_name, 'GemIt')
+
     @author = client.user.login
     @author_email = params[:email]
     @description = params[:description]
@@ -76,10 +77,31 @@ class Gemifier
 
   def push_to_github
     %x(git init)
+    modify_git_config
     %x(git add -A)
     %x(git commit -m "first commit")
     %x(git remote add origin #{repo.ssh_url})
     %x(git push -u origin master)
+  end
+
+  def modify_git_config
+    binding.pry
+    Dir.chdir('.git')
+    %x(rm config)
+    git_config = (<<-EOT)
+
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+[remote "origin"]
+        url = git@github.com-gemit:#{@repo.full_name}.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+
+    EOT
+    File.open('config', 'w+'){|f| f.write(git_config)}
+    Dir.chdir('..')
   end
 
   def create_hash(labels, node_paths)
