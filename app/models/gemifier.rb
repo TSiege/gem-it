@@ -85,7 +85,6 @@ class Gemifier
   end
 
   def modify_git_config
-    binding.pry
     Dir.chdir('.git')
     %x(rm config)
     git_config = (<<-EOT)
