@@ -1,8 +1,3 @@
-$( document ).ready(function() {
-  switchToGemIt();
-  switchToGetIt();
-});
-
 function switchToGemIt() {
   $(".switch-to-gem-it").click(function(){
     // checks if when you switch that you didn't select data
@@ -20,18 +15,19 @@ function switchToGemIt() {
 
 function switchToGetIt() {
   $(".switch-to-get-it").click(function(){
-    $("ul.list-inline li").toggleClass("active");
     $("#gem-info").hide();
     $("#gem-methods").show();
+    return toggleFormTabsClass();
   });
 }
 
-// function toggleFormTabsClass() {
-//   $("ul.list-inline li").toggleClass("active");
-// }
+function toggleFormTabsClass() {
+  $("ul.list-inline li").toggleClass("active");
+}
 
 function switchToGemItFunctions() {
-  $("ul.list-inline li").toggleClass("active");
+  console.log("sdf");
   $("#gem-info").show();
   $("#gem-methods").hide();
+  return toggleFormTabsClass();
 }

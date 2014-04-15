@@ -612,11 +612,6 @@ function repoNameFailure(){
   })
 }
 ;
-$( document ).ready(function() {
-  switchToGemIt();
-  switchToGetIt();
-});
-
 function switchToGemIt() {
   $(".switch-to-gem-it").click(function(){
     // checks if when you switch that you didn't select data
@@ -624,7 +619,7 @@ function switchToGemIt() {
     var methodDataBlank = (function(){return $("#last-gem-method input[type='hidden']").val() == ""}());
     var methodNameBlank = (function(){return $("input#last-method-field").val() == ""}());
     if (methodDataBlank && methodNameBlank) {
-      switchToGemItFunctions()
+      switchToGemItFunctions();
     }
     else {
       methodNameLengthValidationOnNextOrGemIt();
@@ -634,9 +629,9 @@ function switchToGemIt() {
 
 function switchToGetIt() {
   $(".switch-to-get-it").click(function(){
-    toggleFormTabsClass();
     $("#gem-info").hide();
     $("#gem-methods").show();
+    return toggleFormTabsClass();
   });
 }
 
@@ -645,9 +640,10 @@ function toggleFormTabsClass() {
 }
 
 function switchToGemItFunctions() {
-  toggleFormTabsClass();
+  console.log("sdf");
   $("#gem-info").show();
   $("#gem-methods").hide();
+  return toggleFormTabsClass();
 }
 ;
 // need to figure out a drier way to execute these validations
