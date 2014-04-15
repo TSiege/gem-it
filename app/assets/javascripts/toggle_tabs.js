@@ -10,7 +10,7 @@ function switchToGemIt() {
     var methodDataBlank = (function(){return $("#last-gem-method input[type='hidden']").val() == ""}());
     var methodNameBlank = (function(){return $("input#last-method-field").val() == ""}());
     if (methodDataBlank && methodNameBlank) {
-      switchToGemItFunctions()
+      switchToGemItFunctions();
     }
     else {
       methodNameLengthValidationOnNextOrGemIt();
@@ -20,18 +20,18 @@ function switchToGemIt() {
 
 function switchToGetIt() {
   $(".switch-to-get-it").click(function(){
-    toggleFormTabsClass();
+    $("ul.list-inline li").toggleClass("active");
     $("#gem-info").hide();
     $("#gem-methods").show();
   });
 }
 
-function toggleFormTabsClass() {
-  $("ul.list-inline li").toggleClass("active");
-}
+// function toggleFormTabsClass() {
+//   $("ul.list-inline li").toggleClass("active");
+// }
 
 function switchToGemItFunctions() {
-  toggleFormTabsClass();
+  $("ul.list-inline li").toggleClass("active");
   $("#gem-info").show();
   $("#gem-methods").hide();
 }
