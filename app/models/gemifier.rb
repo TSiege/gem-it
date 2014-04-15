@@ -1,5 +1,3 @@
-require 'tmpdir'
-
 class Gemifier
 
   include Buildable::InstanceMethods
@@ -77,6 +75,7 @@ class Gemifier
   end
 
   def push_to_github
+    binding.pry
     %x(git init)
     %x(git add -A)
     %x(git commit -m "first commit")

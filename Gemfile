@@ -36,7 +36,6 @@ gem 'whenever'
 gem 'capistrano', "~> 2.x"
 gem 'net-ssh', "2.7"
 gem "rvm-capistrano"
-
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
@@ -56,7 +55,7 @@ end
 
 group :production do
   gem "google-analytics-rails"
-  # gem "rails_12factor"
+  gem "pry"
   gem "sqlite3"
 end
 
