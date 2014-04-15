@@ -241,7 +241,13 @@ Require #{self.gem_file_name} in your app to return an object with the data incl
 
 Alternatively, require it directly from Github.
 
-    $ gem '#{self.gem_file_name}', :git => 'git://github.com/pat-whitrock/nascar.git'
+    $ gem '#{self.gem_file_name}', :git => '#{self.repo.git_url}'
+
+Instantiate an instance of #{self.gem_file_name.titleize} to use it in your Ruby app.
+
+    $ #{self.gem_file_name.titleize}::Magic.new.call
+
+Save that instance in a variable and call any of your defined methods (#{self.method_names.join(', ')}) on it.
 
       EOT
       readme.close

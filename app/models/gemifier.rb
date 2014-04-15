@@ -3,7 +3,7 @@ class Gemifier
   include Buildable::InstanceMethods
 
   attr_accessor :gem_name, :gem_const, :author, :target_website,
-                :author_email, :bin_dir, :lib_dir, :gemfiles_dir, 
+                :author_email, :bin_dir, :lib_dir, :gemfiles_dir, :method_names
                 :client, :method_names_and_node_paths, :description, :repo, :gem_file_name
 
   def initialize(client, params)
@@ -21,6 +21,7 @@ class Gemifier
     @gem_file_name = gem_name.parameterize.gsub('-','_')
     
     @method_names_and_node_paths = create_hash(params[:method_name], params[:last_path])
+    @method_names = params[:method_name]
     # @node_path_fallback = node_path.gsub(/tbody\[.\]/,"")
   end
 
