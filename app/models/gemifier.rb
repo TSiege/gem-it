@@ -3,7 +3,7 @@ class Gemifier
   include Buildable::InstanceMethods
 
   attr_accessor :gem_name, :gem_const, :author, :target_website,
-                :author_email, :bin_dir, :lib_dir, :gemfiles_dir, :method_names
+                :author_email, :bin_dir, :lib_dir, :gemfiles_dir, :method_names,
                 :client, :method_names_and_node_paths, :description, :repo, :gem_file_name
 
   def initialize(client, params)
