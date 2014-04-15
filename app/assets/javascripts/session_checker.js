@@ -12,13 +12,4 @@ function sessionChecker() {
       $("#website-form").submit();
     }
   });
-
-  $("#small-get-it").click(function(e){
-    if(session === false) {
-      $("#session-error").show();
-    } else {
-      $("#session-error").hide();
-      $("#small-form").submit();
-    }
-  });
 }

@@ -1,5 +1,4 @@
 <%= form_tag create_iframe_path, {remote: true, role: "form", id: "small-form"} do %>
-    <span class="error-message" id="session-error" style="display: none;"><br>You must sign in with <a href="/auth/github">Github</a> to use Gem It.</span>
     <%= text_field_tag :website, "", :class => "form-control", :placeholder => "new website" %>
     <%= button_tag "Get It", type: "button", :class => "btn btn-grey", id: "small-get-it" %>
 <% end %>
