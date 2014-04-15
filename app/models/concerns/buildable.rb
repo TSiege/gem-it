@@ -227,18 +227,27 @@ Or install it yourself as:
 
     $ gem install #{self.gem_file_name}
 
-## Usage
+## Command Line Usage
 
 Use #{self.gem_file_name} in your command line to print out the data whenever you want.
-Or include it in your app to return an object with the data included. 
 
-### commandline 
+    $ #{self.gem_file_name}
 
-      $ #{gem_file_name}
+## Ruby Usage
 
-### API 
-  
-  
+Require #{self.gem_file_name} in your app to return an object with the data included. 
+
+    $ require '#{self.gem_file_name}'
+
+Alternatively, require it directly from Github.
+
+    $ gem '#{self.gem_file_name}', :git => '#{self.repo.git_url}'
+
+Instantiate an instance of #{self.gem_file_name.titleize} to use it in your Ruby app.
+
+    $ #{self.gem_file_name.titleize}::Magic.new.call
+
+Save that instance in a variable and call any of your defined methods (#{self.method_names.join(', ')}) on it.
 
       EOT
       readme.close
