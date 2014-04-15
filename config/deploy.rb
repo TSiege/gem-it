@@ -2,7 +2,8 @@ require 'bundler/capistrano' # for bundler support
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-
+ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
 
 set :application, "gemit"
 set :repository,  "git@github.com:TSiege/gemify.git"
@@ -26,9 +27,14 @@ role :app, "162.243.30.149"                          # This may be the same as y
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
+ task :start do ; end
+ task :stop do ; end
+ task :restart, :roles => :app, :except => { :no_release => true } do
+   run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+ end
+ task :symlink_keys do
+     run "#{try_sudo} ln -s #{shared_path}/application.yml #{release_path}/config/application.yml"
+ end
 end
+
+before "deploy:finalize_update", "deploy:symlink_keys"
