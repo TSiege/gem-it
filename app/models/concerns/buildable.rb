@@ -215,17 +215,13 @@ require "bundler/gem_tasks"
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Clone #{self.gem_file_name}'s git repository and install it as a gem.
 
-    gem '#{self.gem_file_name}'
+    $ git clone #{@repo.html_url}.git
 
-And then execute:
+    $ cd #{self.gem_name}
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install #{self.gem_file_name}
+    $ sudo gem install #{self.gem_name}
 
 ## Command Line Usage
 
@@ -239,13 +235,15 @@ Require #{self.gem_file_name} in your app to return an object with the data incl
 
     $ require '#{self.gem_file_name}'
 
-Alternatively, require it directly from Github.
+Alternatively, require it directly from Github. Don't forget to bundle to add it to your Gemfile.lock.
 
     $ gem '#{self.gem_file_name}', :git => '#{self.repo.git_url}'
 
+    $ bundle
+
 Instantiate an instance of #{self.gem_file_name.titleize} to use it in your Ruby app.
 
-    $ #{self.gem_file_name.titleize}::Magic.new.call
+    $ #{self.gem_file_name.titleize.gsub(/ /, '')}::Magic.new.call
 
 Save that instance in a variable and call any of your defined methods (#{self.method_names.join(', ')}) on it.
 
