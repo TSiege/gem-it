@@ -38,4 +38,4 @@ namespace :deploy do
  end
 end
 
-before "after:finalize_update", "deploy:symlink_keys"
+before "before:finalize_update", "deploy:symlink_keys"
