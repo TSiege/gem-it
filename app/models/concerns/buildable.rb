@@ -217,7 +217,7 @@ require "bundler/gem_tasks"
 
 Add this line to your application's Gemfile:
 
-    gem '#{self.gem_file_name}'
+    gem '#{self.gem_file_name}', :git => '#{self.repo.git_url}'
 
 And then execute:
 
@@ -245,7 +245,7 @@ Alternatively, require it directly from Github.
 
 Instantiate an instance of #{self.gem_file_name.titleize} to use it in your Ruby app.
 
-    $ #{self.gem_file_name.titleize}::Magic.new.call
+    $ #{self.gem_file_name.titleize.gsub(" ", "")}::Magic.new.call
 
 Save that instance in a variable and call any of your defined methods (#{self.method_names.join(', ')}) on it.
 
