@@ -249,6 +249,8 @@ Instantiate an instance of #{self.gem_file_name.titleize} to use it in your Ruby
 
 Save that instance in a variable and call any of your defined methods (#{self.method_names.join(', ')}) on it.
 
+#{self.gem_name} was cut with love, by [Gem It](http://gemit.us/).
+
       EOT
       readme.close
     end
