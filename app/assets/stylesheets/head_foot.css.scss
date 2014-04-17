@@ -1,0 +1,31 @@
+#foot {
+  height: 400px;
+}
+
+hr {
+  margin: auto;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.header-up {
+  -webkit-transform: translateY(-400px);
+     -moz-transform: translateY(-400px);
+          transform: translateY(-400px);
+  -webkit-transition: 2.3s -webkit-transform;         
+      moz-transition: 2.3s -webkit-transform;         
+          transition: 2.3s -webkit-transform; 
+}
+
+.footer-down {
+  -webkit-transform: translateY(600px);
+     -moz-transform: translateY(600px);
+          transform: translateY(600px);
+  -webkit-transition: 1s -webkit-transform;         
+      moz-transition: 1s -webkit-transform;         
+          transition: 1s -webkit-transform;
+}
+
+#head {
+  padding-top: 30px;
+}

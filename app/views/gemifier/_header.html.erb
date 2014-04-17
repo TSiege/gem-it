@@ -1,9 +1,8 @@
-<div class="row" id="head">
+<div class="row center" id="head">
   <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
-    <span>Enter the URL for the site you want to scrape here.</span>
-    <span class="pull-right"><%= link_to "Sign in with Github", "/auth/github" if !@session %></span>
     <div class="panel panel-default contact btn-footer">
       <div class="panel-body">
+        <span class="pull-right"><%= link_to "Sign in with Github", "/auth/github" if !@session %></span>
 
         <%= render "website_form" %>
 

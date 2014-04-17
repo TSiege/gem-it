@@ -3,3 +3,29 @@
   /*font-family: 'Lato', sans-serif;*/
   width: 100%;
 }
+
+.gemify-navbar-text {
+  float: right;
+  position: relative;
+  top: 20px;
+}
+
+#gemify-navbar {
+  position: relative !important;
+  z-index: 2;
+  &.row {
+
+    &:after {
+      content: none !important;
+    }
+    &:before {
+      content: none !important;
+    }
+  }
+}
+
+#gemify-logo {
+  display: inline-block;
+  font-size: 30px;
+  width: 30%;
+}

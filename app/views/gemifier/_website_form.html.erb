@@ -1,6 +1,6 @@
 <%= form_tag create_iframe_path, {remote: true, id: 'website-form', role: "form"} do %>
   <div class="form-group">
-    <%= label_tag :website, "Website URL" %>
+    <%= label_tag :website, "Enter the URL for the site you want to scrape here." %>
     <span class="error-message" id="session-error" style="display: none;"><br>You must sign in with <a href="/auth/github">Github</a> to use Gem It.</span>
     <%= text_field_tag :website, "", :class => "form-control" %>
   </div>

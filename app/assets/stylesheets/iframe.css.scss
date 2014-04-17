@@ -1,0 +1,30 @@
+iframe {
+  border: none;
+}
+
+#iframe-container-div {
+  width: 75%;
+  float: left;
+}
+
+.row {
+  background: white;
+}
+
+#frame-bg {
+  position: absolute;
+  top: 83px;
+  width: 100%;
+  z-index: -1;
+
+  &.row {
+
+    &:after {
+      content: none !important;
+    }
+
+    &:before {
+      content: none !important;
+    }
+  }
+}
