@@ -26,7 +26,6 @@ function toggleFormTabsClass() {
 }
 
 function switchToGemItFunctions() {
-  console.log("sdf");
   $("#gem-info").show();
   $("#gem-methods").hide();
   return toggleFormTabsClass();

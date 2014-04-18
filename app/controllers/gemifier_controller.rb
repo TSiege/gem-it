@@ -3,7 +3,6 @@ class GemifierController < ApplicationController
   def index
     render "no_sessions_index" if !session[:token] 
     @file = File.new("app/views/layouts/application.html.erb")
-    @session = session[:token] ? true : false
   end
 
   def create_iframe
