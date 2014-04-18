@@ -1,5 +1,6 @@
 function switchToGemIt() {
-  $(".switch-to-gem-it").click(function(){
+  $(".switch-to-gem-it").click(function(e){
+    e.preventDefault();
     // checks if when you switch that you didn't select data
     // w/o giving it a method name or vice versa
     var methodDataBlank = (function(){return $("#last-gem-method input[type='hidden']").val() == ""}());
@@ -14,10 +15,13 @@ function switchToGemIt() {
 }
 
 function switchToGetIt() {
-  $(".switch-to-get-it").click(function(){
-    $("#gem-info").hide();
-    $("#gem-methods").show();
-    return toggleFormTabsClass();
+  $(".switch-to-get-it").click(function(e){
+    e.preventDefault();
+    if(!$(".switch-to-get-it").parent().hasClass("active")){
+      $("#gem-info").hide();
+      $("#gem-methods").show();
+      return toggleFormTabsClass();
+    }
   });
 }
 
@@ -26,7 +30,9 @@ function toggleFormTabsClass() {
 }
 
 function switchToGemItFunctions() {
-  $("#gem-info").show();
-  $("#gem-methods").hide();
-  return toggleFormTabsClass();
+  if(!$(".switch-to-gem-it").parent().hasClass("active")){
+    $("#gem-info").show();
+    $("#gem-methods").hide();
+    return toggleFormTabsClass();
+  }
 }

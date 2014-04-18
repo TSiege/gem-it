@@ -520,7 +520,7 @@ function addListenersToIframe() {
     $(this).bind("click", function(e) { 
       e.preventDefault();
       var t = e.target.innerText || e.target.textContent;
-      var p = getPathTo(e.target)
+      var p = getPathToText(e.target)
       $("#last-gem-method .last-data-field").text(t);
       $("#last-gem-method .last_path").val(p);
       if( $('#iframe-side-helper').is(':visible') ) {
@@ -536,7 +536,7 @@ function addListenersToIframe() {
 // check the element
 // if it has an id 
 
-function getPathTo(element) {
+function getPathToText(element) {
     if (element.id!=='')
         return 'id("'+element.id+'")';
     if (element===document.body)
@@ -547,7 +547,7 @@ function getPathTo(element) {
     for (var i= 0; i<siblings.length; i++) {
         var sibling= siblings[i];
         if (sibling===element)
-            return getPathTo(element.parentNode)+'/'+element.tagName.toLowerCase()+'['+(ix+1)+']';
+            return getPathToText(element.parentNode)+'/'+element.tagName.toLowerCase()+'['+(ix+1)+']';
         if (sibling.nodeType===1 && sibling.tagName===element.tagName)
             ix++;
     }
