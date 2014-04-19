@@ -53,19 +53,17 @@ i.fa.fa-picture-o:hover span {
   padding-bottom: 13%;
 }
 
-i.fa.fa-plus-square-o {
-  width: 22px;
+.fa-plus-square-o, .fa-minus-square-o{
+  width: 25px;
 }
 
-i.fa.fa-plus-square-o + span {
+i.fa + span {
   display: none;
 }
-
-i.fa.fa-plus-square-o:hover + span {
-  display: inline;
-  color: #e31b23;
+.fa-plus-square-o:hover span, .fa-minus-square-o:hover span {
+  width: 96px;
 }
 
-i.fa:hover, i.fa:hover span, i.fa:hover + span {
+i.fa:hover, i.fa:hover span {
   cursor: pointer;
 }
