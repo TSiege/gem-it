@@ -1,0 +1,53 @@
+.fa {
+  position: static;
+  font-size: 24px;
+  float: left;
+  width:0%;
+}
+
+i.fa.fa-align-left {
+  margin-left: 5%;
+  margin-right: 40%;
+}
+
+i.fa.fa-picture-o {
+  margin-left: 40%;
+}
+
+.fa span {
+  display: none;
+  position: relative;
+  font-size: 15px;
+  padding: 0;
+  top: -2px;
+}
+
+i.fa.fa-align-left:hover span {
+  left: 0px;
+}
+
+i.fa.fa-link:hover span {
+  left: -4px;
+}
+
+i.fa.fa-picture-o:hover span {
+  left: -12px;
+}
+
+.fa:hover {
+  color: #e31b23;
+}
+
+.fa:hover span {
+  display: inherit;
+}
+
+// .center-fa-icon {
+//   padding-left: 30%;
+// }
+
+.fa-icon-container {
+  width: 60%;
+  margin: auto;
+  padding-bottom: 12%;
+}

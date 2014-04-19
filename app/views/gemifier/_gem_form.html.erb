@@ -1,11 +1,16 @@
 <div id="gem-form-column">
-  <h2 id="info-check">Grab your data.<span id="data"></span></h2>
     
   <%= form_tag create_gem_path, {remote: true, role: "form", id: "gem-it-form"} do %>
 
     <div class="form-group">
 
       <div id="gem-methods">
+        <p class="lead text-center">Grab Your Data.</p>
+        <div class="fa-icon-container">
+          <span><i class="fa fa-align-left"><span>Text</span></i></span>
+          <span><i class="fa fa-link"><span>Links</span></i></span>
+          <span><i class="fa fa-picture-o"><span>Media</span></i></span>
+        </div>
         <div id="last-gem-method">
           <%= label_tag "method_name[]", "Method Name" %>
           <span class="error-message" id="method-name-error" style="display: none;"><br>A method name can't be less than 3 characters.</span>
