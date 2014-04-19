@@ -21,13 +21,14 @@
           <p><span class="last-data-field"></span></p>
           <%= hidden_field_tag 'last_path[]', "", :class => "last_path" %>
         </div>
-        <span class="glyphicon glyphicon-plus"> Get More Data</span><br><br>
+        <i class="fa fa-plus-square-o"></i><span> Get More Data</span><br><br>
         <div class="panel-footer">
           <button type="button" class="btn btn-grey btn-lg btn-block switch-to-gem-it">Next</button>
         </div>
       </div>
 
       <div id="gem-info">
+        <br>
         <%= label_tag :repo_name, "Repo Name" %>
         <span class="error-message" id="hidden-repo-error" style="display: none;"><br> Your repo must be longer than 3 characters.</span>
         <span class="error-message" id="hidden-repo-name-error" style="display: none;"><br> This repo name already exists on your account.</span>

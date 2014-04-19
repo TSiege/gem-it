@@ -1,3 +1,8 @@
+#gem-methods p.lead.text-center{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
 .fa {
   position: static;
   font-size: 24px;
@@ -42,12 +47,25 @@ i.fa.fa-picture-o:hover span {
   display: inherit;
 }
 
-// .center-fa-icon {
-//   padding-left: 30%;
-// }
-
 .fa-icon-container {
   width: 60%;
   margin: auto;
-  padding-bottom: 12%;
+  padding-bottom: 13%;
+}
+
+i.fa.fa-plus-square-o {
+  width: 22px;
+}
+
+i.fa.fa-plus-square-o + span {
+  display: none;
+}
+
+i.fa.fa-plus-square-o:hover + span {
+  display: inline;
+  color: #e31b23;
+}
+
+i.fa:hover, i.fa:hover span, i.fa:hover + span {
+  cursor: pointer;
 }

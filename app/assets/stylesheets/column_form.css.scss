@@ -30,9 +30,11 @@
 }
 
 .right-column-height-fix {
-  height: 600px !important;
+  height: 598px !important;
+  padding-bottom: 0;
   overflow: auto;
   z-index: 3;
+  border-radius: 0;
 }
 span.glyphicon {
   color: #4f4f4f;

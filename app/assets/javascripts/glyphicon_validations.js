@@ -11,7 +11,7 @@ function hideAllErrorMessages() {
 function addFormFields() {
   $("div#last-gem-method").removeAttr("id")
   $("input#last-method-field").removeAttr("id")
-  var $glyphicon = $(".glyphicon-plus")
+  var $glyphicon = $(".fa-plus-square-o")
   var $newFormDiv = $("<div>")
   $newFormDiv.attr("id", "last-gem-method");
 
@@ -83,7 +83,7 @@ function methodNameLengthValidationOnGlyphicon() {
 }
 
 function glyphiconPlusListener() {
-  $(".glyphicon-plus").on("click", function(e){
+  $(".fa-plus-square-o").on("click", function(e){
     methodNameLengthValidationOnGlyphicon();
   });
 }
