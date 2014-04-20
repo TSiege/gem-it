@@ -17,7 +17,7 @@ class Concerns::IframeContentCreator
     @content = doc.read.gsub(/<script[^>]*>[^<]*<\/script>/, "<script></script>")
     @content = @content.gsub(/<meta[^[Xx]]*[Xx]-[Ff][rame]*[-][Oo][ptions]*[^>]*\/>/, "")
     @content = @content.gsub(/(onload=".*")/, "")
-    @content = @content.gsub(/<iframe/, "<video")
+    @content = @content.gsub(/<iframe/, "<video class='gem-it-iframe'")
     @content = @content.gsub(/<\/iframe>/, "</video>")
   end
 end

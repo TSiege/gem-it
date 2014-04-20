@@ -26,7 +26,12 @@ function getDataFromIframeBy(dataType) {
       var data = getDataBy(dataType, e);
       var path = getPathTo(e.target);
       $("#last-gem-method .last-data-field").text(data);
-      $("#last-gem-method .last_path").val(path);
+      if(e.target.classList[0] === "gem-it-iframe") {
+        var correctPath = path.replace(/video/, "iframe");
+        $("#last-gem-method .last_path").val(correctPath);
+      } else {
+        $("#last-gem-method .last_path").val(path);
+      }
       dataSelectorErrorListener();
     });
   });
