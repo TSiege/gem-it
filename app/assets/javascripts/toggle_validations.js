@@ -13,7 +13,7 @@ function hiddenFieldValidatorOnNextOrGemIt(){
 function methodNameUniquenessOnNextOrGemIt (){
   var notUniquetest = methodNameUnique();
   if (notUniquetest) {
-    hideAllErrorMessages();
+    hideAllMethodNameErrorMessages();
     $("input#last-method-field").siblings("span#method-name-uniqueness-error").show();
   }
   else {
@@ -24,7 +24,7 @@ function methodNameUniquenessOnNextOrGemIt (){
 
 function methodNameLengthValidationOnNextOrGemIt() {
   if ($("input#last-method-field").val().length < 3) {
-    hideAllErrorMessages();
+    hideAllMethodNameErrorMessages();
     $("input#last-method-field").siblings("span#method-name-error").show();
   }
   else {

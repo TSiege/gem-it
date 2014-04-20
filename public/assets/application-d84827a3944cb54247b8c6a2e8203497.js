@@ -426,7 +426,7 @@ $( document ).ready(function() {
 
 // methods for validating and adding form fields
 
-function hideAllErrorMessages() {
+function hideAllMethodNameErrorMessages() {
   $(".error-message").hide();
 }
 
@@ -484,7 +484,7 @@ function methodNameUnique() {
 function methodNameUniquenessOnGlyphicon (){
   var notUniquetest = methodNameUnique();
   if (notUniquetest) {
-    hideAllErrorMessages();
+    hideAllMethodNameErrorMessages();
     $("input#last-method-field").siblings("span#method-name-uniqueness-error").show();
   }
   else {
@@ -495,7 +495,7 @@ function methodNameUniquenessOnGlyphicon (){
 
 function methodNameLengthValidationOnGlyphicon() {
   if ($("input#last-method-field").val().length < 3) {
-    hideAllErrorMessages();
+    hideAllMethodNameErrorMessages();
     $("input#last-method-field").siblings("span#method-name-error").show();
   }
   else {
@@ -661,7 +661,7 @@ function hiddenFieldValidatorOnNextOrGemIt(){
 function methodNameUniquenessOnNextOrGemIt (){
   var notUniquetest = methodNameUnique();
   if (notUniquetest) {
-    hideAllErrorMessages();
+    hideAllMethodNameErrorMessages();
     $("input#last-method-field").siblings("span#method-name-uniqueness-error").show();
   }
   else {
@@ -672,7 +672,7 @@ function methodNameUniquenessOnNextOrGemIt (){
 
 function methodNameLengthValidationOnNextOrGemIt() {
   if ($("input#last-method-field").val().length < 3) {
-    hideAllErrorMessages();
+    hideAllMethodNameErrorMessages();
     $("input#last-method-field").siblings("span#method-name-error").show();
   }
   else {

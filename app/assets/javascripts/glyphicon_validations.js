@@ -4,8 +4,8 @@ $( document ).ready(function() {
 
 // methods for validating and adding form fields
 
-function hideAllErrorMessages() {
-  $(".error-message").hide();
+function hideAllMethodNameErrorMessages() {
+  $("#method-name-error, #method-name-uniqueness-error, #hidden-input-error").hide();
 }
 
 function addFormFields() {
@@ -62,7 +62,7 @@ function methodNameUnique() {
 function methodNameUniquenessOnGlyphicon (){
   var notUniquetest = methodNameUnique();
   if (notUniquetest) {
-    hideAllErrorMessages();
+    hideAllMethodNameErrorMessages();
     $("input#last-method-field").siblings("span#method-name-uniqueness-error").show();
   }
   else {
@@ -73,7 +73,7 @@ function methodNameUniquenessOnGlyphicon (){
 
 function methodNameLengthValidationOnGlyphicon() {
   if ($("input#last-method-field").val().length < 3) {
-    hideAllErrorMessages();
+    hideAllMethodNameErrorMessages();
     $("input#last-method-field").siblings("span#method-name-error").show();
   }
   else {
