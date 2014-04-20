@@ -47,8 +47,6 @@ class Gemifier
 
       finalize_build
 
-    # repo.create
-
     end  
 
   end
