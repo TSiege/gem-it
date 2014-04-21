@@ -2,9 +2,9 @@ class Gemifier
 
   include Buildable::InstanceMethods
 
-  attr_accessor :gem_name, :gem_const, :author, :target_website,
+  attr_accessor :gem_name, :gem_name_constant, :author, :target_website,
                 :author_email, :bin_dir, :lib_dir, :gemfiles_dir, :method_names,
-                :client, :method_names_and_node_paths, :description, :repo, :gem_file_name,
+                :client, :method_names_and_node_paths, :description, :repo, :gem_name_snake_case,
                 :method_types_by_name
 
   def initialize(client, params)
@@ -16,8 +16,8 @@ class Gemifier
     @target_website = params[:url]
 
     @gem_name = params[:gem_name]
-    @gem_const = gem_name.split(/_| |-/).collect(&:titleize).join()
-    @gem_file_name = gem_name.parameterize.gsub('-','_')
+    @gem_name_constant = gem_name.split(/_|\s|-/).collect(&:titleize).join()
+    @gem_name_snake_case = gem_name.parameterize.gsub(/-|\s/,'_')
     
     @method_names = methodize(params[:method_name])
     @method_names_and_node_paths = create_method_hash(method_names, params[:last_path])
@@ -57,7 +57,7 @@ class Gemifier
   def make_dirs
     @bin_dir = "#{@tmpdir}/bin"
     @lib_dir = "#{@tmpdir}/lib"
-    @gemfiles_dir = "#{lib_dir}/#{gem_file_name}"
+    @gemfiles_dir = "#{lib_dir}/#{gem_name_snake_case}"
     Dir.mkdir(lib_dir)
     Dir.mkdir(gemfiles_dir)
     Dir.mkdir(bin_dir, 0777)
@@ -66,7 +66,7 @@ class Gemifier
   def finalize_build
     app_path = Dir.pwd
     Dir.chdir(@tmpdir)
-    %x(gem build #{gem_file_name}.gemspec)
+    %x(gem build #{gem_name_snake_case}.gemspec)
     push_to_github
     Dir.chdir(app_path)
   end

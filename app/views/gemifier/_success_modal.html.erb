@@ -6,27 +6,27 @@
         <h4 class="modal-title" id="myModalLabel"><%= @gemifier.repo.name %> was successfully created!</h4>
       </div>
       <div class="modal-body">
-        You can find <%= @gem_name %> on Github at <%= link_to @gemifier.repo.html_url, @gemifier.repo.html_url %>. To get started using <%= @gem_name %>, just type:
+        You can find <%= @gemifier.gem_name_constant %> on Github at <%= link_to @gemifier.repo.html_url, @gemifier.repo.html_url %>. To get started using <%= @gemifier.gem_name_constant %>, just type:
         </br>
         </br>
           <code> git clone <%= @gemifier.repo.html_url %>.git </code>
           </br>
           <code> cd <%= @gemifier.repo.name %> </code>
           </br>
-          <code> sudo gem install <%= @gemifier.gem_file_name %> </code>
+          <code> sudo gem install <%= @gemifier.gem_name_snake_case %> </code>
         </br>
         </br>
-        This will install <%= @gem_name %>, giving you access to both its command line runner (just type <%= @gem_name %> in your Terminal) and the ability to require it within your Ruby applications.
+        This will install <%= @gemifier.gem_name_constant %>, giving you access to both its command line runner (just type <%= @gemifier.gem_name_constant %> in your Terminal) and the ability to require it within your Ruby applications.
         </br>
         <h5>Command Line</h5>
-        Just type <code> <%= @gem_name.gem_file_name %></code>.
+        Just type <code> <%= @gemifier.gem_name_snake_case %></code>.
         </br>
         <h5>Ruby</h5>
-        To require <%= @gem_name %> in a Ruby application, use:
+        To require <%= @gemifier.gem_name_constant %> in a Ruby application, use:
         </br>
-        <code> gem '<%= @gem_name %>', :git => '<%= @gemifier.repo.git_url %>' </code>
+        <code> gem '<%= @gemifier.gem_name_snake_case %>', :git => '<%= @gemifier.repo.git_url %>' </code>
         </br>
-        Instantiate <%= @gem_name %> by calling <code> <%= @gem_name.titleize %>::Magic.new.call</code>. Save that instance in a variable and call any of your defined methods (<code><%= @method_names.join(", ") %></code>) on it.
+        Instantiate <%= @gemifier.gem_name_constant %> by calling <code> <%= @gemifier.gem_name_constant %>::Magic.new.call</code>. Save that instance in a variable and call any of your defined methods (<code><%= @gemifier.method_names.join(", ") %></code>) on it.
         </br>
         </br>
         Want to do learn more about gems? Find out how to share your gem with the Ruby community by publishing to <%= link_to 'RubyGems', 'http://guides.rubygems.org/publishing/' %> and how to <%= link_to 'create your own gem from scratch', 'http://guides.rubygems.org/publishing/' %>.

@@ -31,8 +31,6 @@ class GemifierController < ApplicationController
     reset_session
 
     respond_to do |f|
-      @method_names = @gemifier.method_names
-      @gem_name = params[:gem_name] #for modal
       f.html {render :success_modal}
       f.js
     end
