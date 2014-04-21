@@ -1,5 +1,4 @@
-#gem-methods p.lead.text-center{
-  margin-top: 5px;
+#gem-methods p.lead.text-center, #css-info .fa-css-header {
   margin-bottom: 10px;
 }
 
@@ -53,6 +52,10 @@ i.fa.fa-picture-o:hover span {
   padding-bottom: 13%;
 }
 
+.fa-icon-container.fa-css-it {
+  width: 100%;
+}
+
 .fa-plus-square-o, .fa-minus-square-o{
   width: 25px;
 }
@@ -66,6 +69,21 @@ i.fa + span {
 
 i.fa:hover, i.fa:hover span {
   cursor: pointer;
+}
+
+.fa.fa-css3 {
+  margin-left: 44%;
+  color: #e31b23;
+}
+
+i.fa.fa-css3:hover span {
+  top: 0;
+  left: -5px;
+}
+
+.computer-css {
+  width: 90%;
+  margin: auto;
 }
 
 .fa-active {

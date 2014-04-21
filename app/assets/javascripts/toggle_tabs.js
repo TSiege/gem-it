@@ -1,11 +1,9 @@
 function switchToGemIt() {
   $(".switch-to-gem-it").click(function(e){
     e.preventDefault();
-    // checks if when you switch that you didn't select data
-    // w/o giving it a method name or vice versa
-    var methodDataBlank = (function(){return $("#last-gem-method input[type='hidden']").val() == ""}());
-    var methodNameBlank = (function(){return $("input#last-method-field").val() == ""}());
-    if (methodDataBlank && methodNameBlank) {
+
+    if (testBlanknessOf("#last-gem-method input[type='hidden']") &&
+     testBlanknessOf("input#last-method-field")) {
       switchToGemItFunctions();
     }
     else {
@@ -17,22 +15,43 @@ function switchToGemIt() {
 function switchToGetIt() {
   $(".switch-to-get-it").click(function(e){
     e.preventDefault();
-    if(!$(".switch-to-get-it").parent().hasClass("active")){
-      $("#gem-info").hide();
-      $("#gem-methods").show();
-      return toggleFormTabsClass();
-    }
+    switchToGetItFunctions();
   });
 }
 
-function toggleFormTabsClass() {
-  $("ul.list-inline li").toggleClass("active");
+function switchToGetItFunctions(){
+  var $getIt = $(".switch-to-get-it");
+  if(!$getIt.parent().hasClass("active")){
+    removeActiveFromTabs();
+    $("#gem-info, #css-info").hide();
+    $("#gem-methods").show();
+    $getIt.parent().addClass("active");
+  }
+}
+
+function removeActiveFromTabs() {
+  $("ul.list-inline li").removeClass("active");
 }
 
 function switchToGemItFunctions() {
-  if(!$(".switch-to-gem-it").parent().hasClass("active")){
+  var $gemIt = $("li .switch-to-gem-it");
+  if(!$gemIt.parent().hasClass("active")){
+    removeActiveFromTabs();
+    $("#gem-methods, #css-info").hide();
     $("#gem-info").show();
-    $("#gem-methods").hide();
-    return toggleFormTabsClass();
+    $gemIt.parent().addClass("active");
   }
+}
+
+function switchToCssIt() {
+  $(".switch-to-css-it").click(function(e){
+    e.preventDefault();
+    var $cssIt = $(".switch-to-css-it");
+    if(!$cssIt.parent().hasClass("active")){
+      removeActiveFromTabs();
+      $("#gem-info, #gem-methods").hide();
+      $("#css-info").show();
+      $cssIt.parent().addClass("active");
+    }
+  });
 }

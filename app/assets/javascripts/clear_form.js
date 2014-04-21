@@ -12,7 +12,10 @@ function resetAndRemoveMethodForms(){
       resetAndRemoveMethodForms();
     }
     else {
-      $(".last-data-field, #last-method-field").text("");
+      $.each($("#last-gem-method input"), function(i, field){
+        field.value = "";
+      });
+      $(".last-data-field").text("")
       hideAllMethodNameErrorMessages();
     }
   });

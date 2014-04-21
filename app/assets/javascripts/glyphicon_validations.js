@@ -9,11 +9,12 @@ function hideAllMethodNameErrorMessages() {
 }
 
 function addFormFields() {
-  $("div#last-gem-method").removeAttr("id")
-  $("input#last-method-field").removeAttr("id")
-  $("input#last-datatype-method-field").removeAttr("id")
-  var $glyphicon = $(".fa-plus-square-o")
-  var $newFormDiv = $("<div>")
+  $("div#last-gem-method", "input#last-method-field",
+   "input#last-datatype-method-field").removeAttr("id");
+
+  var $glyphicon = $(".fa-plus-square-o"),
+      $newFormDiv = $("<div>");
+
   $newFormDiv.attr("id", "last-gem-method");
 
   var newFormField = '<label for="method_name[]">Method Name</label>' +
@@ -28,18 +29,20 @@ function addFormFields() {
 
   $newFormDiv.append(newFormField);
 
-  $("label[for='method-data-1']").text("This is the data you want.")
+  $("label[for='method-data-1']").text("This is the data you want.");
 
   $glyphicon.parent().removeAttr();
+
   $("#gem-methods").find("input").each(function(){
       $(this).attr("readonly", "readonly");
   });
+  
   $glyphicon.before($newFormDiv);
   $("span#method-name-error").hide();
 }
 
 function hiddenFieldValidator(){
-  if ($("#last-gem-method input[type='hidden']").val() == "") {
+  if (testBlanknessOf("#last-gem-method input[type='hidden']")) {
     $("input#last-method-field").siblings("#hidden-input-error").show();
   }
   else {
@@ -48,9 +51,13 @@ function hiddenFieldValidator(){
   }
 }
 
+function testBlanknessOf(inputField) {
+  return $(inputField).val() === "";
+}
+
 function methodNameUnique() {
   var $methodNames = $("input[name='method_name[]']");
-  var methodNamesLength = ($methodNames.length - 1)
+  var methodNamesLength = ($methodNames.length - 1);
   var $lastMethodName = $methodNames.last();
   var valuesArr = $.map($methodNames, function(n,i){
     return [n.value.toLowerCase()];
@@ -58,7 +65,7 @@ function methodNameUnique() {
   var notUnique = (function() {
     return $.inArray($lastMethodName.val(), valuesArr, 1) > -1;
   }());
-  return notUnique
+  return notUnique;
 }
 
 function methodNameUniquenessOnGlyphicon (){
