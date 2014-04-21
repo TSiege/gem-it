@@ -5,6 +5,7 @@ $( document ).ready(function() {
 
 function addListenersToIframe() {
   getDataFromIframeBy("Text");
+  activateSelectorBy("Text");
   if( $('#iframe-side-helper').is(':visible') ) {
     $('#iframe-side-helper').hide();
     $('#tab-bar').show();
@@ -16,6 +17,7 @@ function unbindAndRebindIframe() {
   $(".fa-align-left, .fa-link, .fa-picture-o").click(function(e){
     var usersChoice = $(this).children().text();
     getDataFromIframeBy(usersChoice);
+    activateSelectorBy(usersChoice);
   });
 }
 
@@ -25,11 +27,11 @@ function getDataFromIframeBy(dataType) {
       e.preventDefault();
       var eTarget = e.target,
         data = getDataBy(dataType, eTarget),
-        path = pathCorrector(dataType, getPathTo(eTarget));
+        path = linkPathCorrector(dataType, getPathTo(eTarget));
       $("#last-gem-method .last-data-field").text(data);
       if(eTarget.classList[0] === "gem-it-iframe") {
-        var correctPath = path.replace(/video/, "iframe");
-        $("#last-gem-method .last_path").val(correctPath);
+        var correctIframePath = path.replace(/video/, "iframe");
+        $("#last-gem-method .last_path").val(correctIframePath);
       } else {
         $("#last-gem-method .last_path").val(path);
       }
@@ -48,6 +50,14 @@ function getDataBy(dataType, eTarget) {
   }
   else {
     return eTarget.src || "No media here.";
+  }
+}
+
+function linkPathCorrector(dataType, path) {
+  if (dataType === "Links") {
+    return path.match(/.+a\[\d\]/)[0];
+  } else {
+    return path;
   }
 }
 
@@ -81,10 +91,16 @@ function dataSelectorErrorListener(){
   }
 }
 
-function pathCorrector(dataType, path) {
-  if (dataType === "Links") {
-    return path.match(/.+a\[\d\]/)[0];
-  } else {
-    return path;
+function activateSelectorBy(dataType) {
+  var $selectors = $(".fa-align-left, .fa-link, .fa-picture-o");
+  $selectors.removeClass("fa-active");
+  if (dataType === "Text"){
+    $selectors[0].classList.add("fa-active");
+  }
+  else if(dataType === "Links") {
+    $selectors[1].classList.add("fa-active");
+  }
+  else {
+    $selectors[2].classList.add("fa-active");
   }
 }
