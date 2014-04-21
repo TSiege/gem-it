@@ -64,21 +64,28 @@ module #{gem_const}
 
     def set_value(hash)
       key, value = hash.first
-      result = self.doc.xpath(value).text
-      key = methodize(key)
+      result = get_data_by(key, value)
       if result.empty?
-        result = self.doc.xpath(strip_tbody(value)).text
+        result = get_data_by(key, strip_tbody(value))
       end
       {key => result}
     end
 
-    def strip_tbody(value)
-      value.gsub(/tbody\[.\]/,"") if !value.nil?
+    def get_data_by(method_name, path)
+      method_type_hash = #{self.method_types_by_name}
+      if method_type_hash[method_name] == "Text"
+        self.doc.xpath(path).text.strip
+      elsif method_type_hash[method_name] == "Links"
+        self.doc.xpath(path).attr('href').text
+      elsif method_type_hash[method_name] == "Media"
+        self.doc.xpath(path).attr('src').text
+      end
     end
 
-    def methodize(string)
-      string.downcase.gsub(" ", "_").strip 
+    def strip_tbody(path)
+      path.gsub(/tbody\[.\]/,"") if !path.nil?
     end
+
   end
 
 end
@@ -219,9 +226,9 @@ Clone #{self.gem_file_name}'s git repository and install it as a gem.
 
     $ git clone #{@repo.html_url}.git
 
-    $ cd #{self.gem_name}
+    $ cd #{@repo.name}
 
-    $ sudo gem install #{self.gem_name}
+    $ sudo gem install #{self.gem_file_name}
 
 ## Command Line Usage
 
@@ -320,15 +327,6 @@ end
       EOT
       version.close
 
-    end
-
-    def values_to_methods(values)
-      string = "available methods: \n"
-      values.each do |v| 
-        v = v.keys[0]
-        string += "\t`" + v.downcase.gsub(" ", "_").strip + "`\n" 
-      end 
-      string 
     end
   end
 end

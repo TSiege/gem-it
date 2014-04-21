@@ -13,13 +13,13 @@
           </br>
           <code> cd <%= @gemifier.repo.name %> </code>
           </br>
-          <code> sudo gem install <%= @gemifier.gem_name %> </code>
+          <code> sudo gem install <%= @gemifier.gem_file_name %> </code>
         </br>
         </br>
         This will install <%= @gem_name %>, giving you access to both its command line runner (just type <%= @gem_name %> in your Terminal) and the ability to require it within your Ruby applications.
         </br>
         <h5>Command Line</h5>
-        Just type <code> <%= @gem_name %></code>.
+        Just type <code> <%= @gem_name.gem_file_name %></code>.
         </br>
         <h5>Ruby</h5>
         To require <%= @gem_name %> in a Ruby application, use:

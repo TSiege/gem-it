@@ -4,13 +4,12 @@ class Gemifier
 
   attr_accessor :gem_name, :gem_const, :author, :target_website,
                 :author_email, :bin_dir, :lib_dir, :gemfiles_dir, :method_names,
-                :client, :method_names_and_node_paths, :description, :repo, :gem_file_name
+                :client, :method_names_and_node_paths, :description, :repo, :gem_file_name,
+                :method_types_by_name
 
   def initialize(client, params)
     @client = client
     @repo = client.create_repo(params[:repo_name], {description: params[:description], :private => false})
-    client.add_collaborator(@repo.full_name, 'GemIt')
-
     @author = client.user.login
     @author_email = params[:email]
     @description = params[:description]
@@ -20,9 +19,11 @@ class Gemifier
     @gem_const = gem_name.split(/_| |-/).collect(&:titleize).join()
     @gem_file_name = gem_name.parameterize.gsub('-','_')
     
-    @method_names_and_node_paths = create_hash(params[:method_name], params[:last_path])
-    @method_names = params[:method_name]
+    @method_names = methodize(params[:method_name])
+    @method_names_and_node_paths = create_method_hash(method_names, params[:last_path])
+    @method_types_by_name = create_method_type_hash(method_names, params[:method_datatypes])
     # @node_path_fallback = node_path.gsub(/tbody\[.\]/,"")
+    client.add_collaborator(@repo.full_name, 'GemIt')
   end
 
   def scaffold
@@ -48,10 +49,6 @@ class Gemifier
       finalize_build
 
     end  
-
-  end
-
-  def destroy_directory 
 
   end
 
@@ -102,7 +99,15 @@ class Gemifier
     Dir.chdir('..')
   end
 
-  def create_hash(labels, node_paths)
+  def methodize(string_method_names_array)
+    string_method_names_array.collect do |string|
+      if !string.empty?
+        string.downcase.gsub(" ", "_").strip
+      end  
+    end 
+  end
+
+  def create_method_hash(labels, node_paths)
     labels.collect.with_index do |label, i|
       if !label.empty? && !node_paths[i].empty?
         {label => node_paths[i]}
@@ -110,4 +115,13 @@ class Gemifier
     end 
   end
 
+  def create_method_type_hash(labels, method_types)
+    hash = {}
+    labels.each_with_index do |label, i|
+      if !label.empty? && !method_types[i].empty?
+        hash[label] = method_types[i]
+      end  
+    end
+    hash
+  end
 end

@@ -11,6 +11,7 @@ function hideAllMethodNameErrorMessages() {
 function addFormFields() {
   $("div#last-gem-method").removeAttr("id")
   $("input#last-method-field").removeAttr("id")
+  $("input#last-datatype-method-field").removeAttr("id")
   var $glyphicon = $(".fa-plus-square-o")
   var $newFormDiv = $("<div>")
   $newFormDiv.attr("id", "last-gem-method");
@@ -22,7 +23,8 @@ function addFormFields() {
     '<label for="method-data">Is this the data you want?</label>' +
     '<span class="error-message" id="hidden-input-error" style="display: none;"><br> You must pick a target before adding more fields.</span>' +
     '<p><span class="last-data-field"></span></p>' +
-    '<input class="last_path" name="last_path[]" type="hidden" value="">';
+    '<input class="last_path" name="last_path[]" type="hidden" value="">' +
+    '<input class="method_datatypes" name="method_datatypes[]" type="hidden" value="">';
 
   $newFormDiv.append(newFormField);
 
