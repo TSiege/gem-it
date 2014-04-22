@@ -102,7 +102,7 @@ class Gemifier
   def methodize(string_method_names_array)
     string_method_names_array.collect do |string|
       if !string.empty?
-        string.downcase.gsub(" ", "_").strip
+        string.strip.downcase.gsub(" ", "_")
       end  
     end 
   end

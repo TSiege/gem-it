@@ -11,21 +11,23 @@
   display: none;
 }
 
+// these are important because when its 
+// compiled they do not show up correctly styled
 .gem-it-btn {
-  color: #fff;
-  background-color: #e31b23;
-  background-image: linear-gradient(#e31b23, #b32024);
-  border: 1px solid #a00;
-  border-bottom: 1px solid #9f081e;
+  color: #fff !important;
+  background-color: #e31b23 !important;
+  background-image: linear-gradient(#e31b23, #b32024) !important;
+  border: 1px solid #a00 !important;
+  border-bottom: 1px solid #9f081e !important;
 }
 
 .gem-it-btn:hover {
-  color: #fafafa;
-  background-color: #a00;
+  color: #fafafa !important;
+  background-color: #a00 !important;
 }
 
 .gem-it-btn:focus {
-  color: #fff;
+  color: #fff !important;
 }
 
 .right-column-height-fix {
