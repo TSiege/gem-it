@@ -109,8 +109,8 @@ class Gemifier
 
   def create_method_hash(labels, node_paths)
     labels.collect.with_index do |label, i|
-      if !label.empty? && label != nil &&
-       !node_paths[i].empty? && node_paths[i] != nil
+      if label != nil && !label.empty? &&
+       node_paths[i] != nil && !node_paths[i].empty?
         {label => node_paths[i]}
       end  
     end 
@@ -119,8 +119,8 @@ class Gemifier
   def create_method_type_hash(labels, method_types)
     hash = {}
     labels.each_with_index do |label, i|
-      if !label.empty? && label != nil &&
-       !method_types[i].empty? && method_types[i] != nil
+      if label != nil && !label.empty? &&
+       method_types[i] != nil && !method_types[i].empty?
         hash[label] = method_types[i]
       end  
     end
