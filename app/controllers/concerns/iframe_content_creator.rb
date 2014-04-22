@@ -9,7 +9,7 @@ class Concerns::IframeContentCreator
   end
 
   def create_iframe_file
-    file.write(content)
+    file.write(content.force_encoding('UTF-8'))
     file.close
   end
 
