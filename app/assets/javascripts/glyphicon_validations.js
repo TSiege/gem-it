@@ -9,8 +9,8 @@ function hideAllMethodNameErrorMessages() {
 }
 
 function addFormFields() {
-  $("div#last-gem-method", "input#last-method-field",
-   "input#last-datatype-method-field").removeAttr("id");
+  $("div#last-gem-method").removeAttr("id");
+  $("input#last-method-field").removeAttr("id");
 
   var $glyphicon = $(".fa-plus-square-o"),
       $newFormDiv = $("<div>");
