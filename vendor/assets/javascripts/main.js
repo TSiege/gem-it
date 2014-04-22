@@ -31,4 +31,3 @@ $("a.scroll-top").click(function(e){
 $(".item-choice a").click(function(e){
    e.preventDefault();
 });
-$('#Grid').mixitup();

@@ -15,12 +15,16 @@ function switchToGemIt() {
 function switchToGetIt() {
   $(".switch-to-get-it").click(function(e){
     e.preventDefault();
-    switchToGetItFunctions();
+    unbindListenersFromIframe();
+    var defaultChoice = "Text";
+    getDataFromIframeBy(defaultChoice);
+    activateSelectorBy(defaultChoice);
+    return switchToGetItFunctions();
   });
 }
 
 function switchToGetItFunctions(){
-  var $getIt = $(".switch-to-get-it");
+  var $getIt = $("a.switch-to-get-it");
   if(!$getIt.parent().hasClass("active")){
     removeActiveFromTabs();
     $("#gem-info, #css-info").hide();

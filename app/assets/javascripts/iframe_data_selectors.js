@@ -1,6 +1,6 @@
 $( document ).ready(function() {
   addListenersToIframe();
-  unbindAndRebindIframe();
+  bindNewSelectorToIframe();
 });
 
 function addListenersToIframe() {
@@ -13,8 +13,9 @@ function addListenersToIframe() {
   }
 }
 
-function unbindAndRebindIframe() {
+function bindNewSelectorToIframe() {
   $(".fa-align-left, .fa-link, .fa-picture-o").click(function(e){
+    unbindListenersFromIframe();
     var usersChoice = $(this).children().text();
     getDataFromIframeBy(usersChoice);
     activateSelectorBy(usersChoice);
@@ -55,7 +56,11 @@ function getDataBy(dataType, eTarget) {
 
 function linkPathCorrector(dataType, path) {
   if (dataType === "Links") {
-    return path.match(/.+a\[\d\]/)[0];
+    if(path.match(/.+a\[\d\]/) instanceof Array)
+      return path.match(/.+a\[\d\]/)[0];
+    else {
+      return path.match(/.+a\[\d\]/);
+    }
   } else {
     return path;
   }
@@ -103,4 +108,10 @@ function activateSelectorBy(dataType) {
   else {
     $selectors[2].classList.add("fa-active");
   }
+}
+
+function unbindListenersFromIframe() {
+  $("iframe").contents().find("html").each(function() {
+    $(this).unbind();
+  });
 }

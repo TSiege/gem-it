@@ -1,11 +1,8 @@
 (function($){
 
   $.fn.getStyles = function(only, except){
-
     var product = {};
-
     var style;
-
     var name;
 
     if(only && only instanceof Array){
