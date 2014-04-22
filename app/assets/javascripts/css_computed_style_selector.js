@@ -24,7 +24,7 @@ function selectElementsStyles() {
 function printStylesOf(uniqueStyleObject){
   var styleString = "";
   for (var prop in uniqueStyleObject) {
-    styleString += ("" + prop + ": " + uniqueStyleObject[prop] + ";<br>");
+    styleString += ("<b>" + prop + ":</b> " + uniqueStyleObject[prop] + ";<br>");
   }
   $("p.lead.computed-css").html(styleString);
 }
