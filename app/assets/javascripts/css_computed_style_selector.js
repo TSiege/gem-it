@@ -10,9 +10,6 @@ function selectElementsStyles() {
       var selectedElementStyles = $(e.target).getStyles(),
           defaultElementStyles = $("<" + e.target.tagName + ">").getStyles(),
           foundStyles = selectUniqueStylesFrom(selectedElementStyles, defaultElementStyles);
-      console.log(selectedElementStyles)
-      console.log(defaultElementStyles)
-      console.log(foundStyles)
       printStylesOf(foundStyles);
     });
   });
