@@ -101,7 +101,7 @@ class Gemifier
 
   def methodize(string_method_names_array)
     string_method_names_array.collect do |string|
-      if !string.empty?
+      if !string.empty? && string != nil
         string.strip.downcase.gsub(" ", "_")
       end  
     end 
@@ -109,7 +109,8 @@ class Gemifier
 
   def create_method_hash(labels, node_paths)
     labels.collect.with_index do |label, i|
-      if !label.empty? && !node_paths[i].empty?
+      if !label.empty? && label != nil &&
+       !method_types[i].empty? && method_types[i] != nil
         {label => node_paths[i]}
       end  
     end 
@@ -118,7 +119,8 @@ class Gemifier
   def create_method_type_hash(labels, method_types)
     hash = {}
     labels.each_with_index do |label, i|
-      if !label.empty? && !method_types[i].empty?
+      if !label.empty? && label != nil &&
+       !method_types[i].empty? && method_types[i] != nil
         hash[label] = method_types[i]
       end  
     end
