@@ -3,7 +3,12 @@ class Concerns::IframeContentCreator
 
   def initialize(params)
     @page = params[:website] !~ /http/ ? "http://#{params[:website]}" : params[:website]
-    @doc = open(page)
+    begin
+      @doc = open(page)
+    rescue
+      @page = @page.gsub(/http/, "https")
+      @doc = open(page)
+    end
     @digest = Digest::MD5.hexdigest(page)
     @file = File.new("public/tmp/#{digest}.html", 'w')
   end
