@@ -73,7 +73,7 @@ class Gemifier
 
   def push_to_github
     %x(git init)
-    modify_git_config if Rails.env.prodution?
+    # modify_git_config if Rails.env.prodution?
     %x(git add -A)
     %x(git commit -m "first commit")
     %x(git remote add origin #{repo.ssh_url})
