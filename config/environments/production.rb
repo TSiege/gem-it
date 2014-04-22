@@ -1,7 +1,9 @@
 Rails.application.configure do
   GA.tracker = Rails.application.secrets.google_analytics_code
   # Settings specified here will take precedence over those in config/application.rb.
-
+  # fix for select2 in IE8
+  require 'uglifier'
+  config.assets.js_compressor = Uglifier.new(output: {ascii_only: true, quote_keys: true})
   # Code is not reloaded between requests.
   config.cache_classes = true
 

@@ -21,28 +21,18 @@
 
       if (window.getComputedStyle) {
 
-        var pattern = /\-([a-z])/g;
-        var uc = function (a, b) {
-            return b.toUpperCase();
-        };      
-        var camelize = function(string){
-          return string.replace(pattern, uc);
-        };
-
         if (style = window.getComputedStyle(dom, null)) {
-          var camel, value;
+          var value;
           if (style.length) {
             for (var i = 0, l = style.length; i < l; i++) {
               name = style[i];
-              camel = camelize(name);
               value = style.getPropertyValue(name);
-              product[camel] = value;
+              product[name] = value;
             }
           } else {
             for (name in style) {
-              camel = camelize(name);
               value = style.getPropertyValue(name) || style[name];
-              product[camel] = value;
+              product[name] = value;
             }
           }
         }

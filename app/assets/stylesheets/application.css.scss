@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  *= require vendor_stylesheets
-
-
+ *= require select2
+ *= require select2-bootstrap
  */
  @import "font-awesome";

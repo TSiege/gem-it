@@ -16,3 +16,4 @@
 //= require jquery_ujs
 //= require_tree .
 //= require vendor_javascripts
+//= require select2

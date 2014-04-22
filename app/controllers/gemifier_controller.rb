@@ -3,10 +3,11 @@ class GemifierController < ApplicationController
   def index
     render "no_sessions_index" if !session[:token] 
     @file = File.new("app/views/layouts/application.html.erb")
+    # @properties = Concerns::Css::PROPERTIES
   end
 
   def create_iframe
-
+    # @properties = Concerns::Css::PROPERTIES
     @iframe_file = Concerns::IframeContentCreator.new(params)
     @iframe_file.create_iframe_file
 
