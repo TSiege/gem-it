@@ -6,11 +6,6 @@ $( document ).ready(function() {
 function addListenersToIframe() {
   getDataFromIframeBy("Text");
   activateSelectorBy("Text");
-  if( $('#iframe-side-helper').is(':visible') ) {
-    $('#iframe-side-helper').hide();
-    $('#tab-bar').show();
-    $('#gem-form-column').show();
-  }
 }
 
 function bindNewSelectorToIframe() {

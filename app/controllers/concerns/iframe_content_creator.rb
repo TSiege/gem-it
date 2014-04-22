@@ -2,7 +2,7 @@ class Concerns::IframeContentCreator
   attr_accessor :page, :file, :digest, :doc, :disable_iframe
 
   def initialize(params)
-    @page = params[:website] !~ /http/ ? "http://#{params[:website]}" : params[:website] 
+    @page = params[:website] !~ /http/ ? "http://#{params[:website]}" : params[:website]
     @doc = open(page)
     @digest = Digest::MD5.hexdigest(page)
     @file = File.new("public/tmp/#{digest}.html", 'w')
