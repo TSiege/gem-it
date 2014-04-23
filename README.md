@@ -1,8 +1,8 @@
-# Gem It
+# [Gem It](http://gemit.us/)
 
 ## Description
 
-Gem It is a web app that users can enter a url and make mini scraping gem with its content.
+[Gem It](http://gemit.us/) is a web app that users can enter a url and make mini scraping gem with its content.
 
 ## Background
 
