@@ -22,9 +22,12 @@ This app was made with Ruby Developers in mind. Having had the frustration of wa
 
 <b>How to use one of our gems</b><br>
   Run these commands in your terminal to will install your gem.<br>
-<code> git clone git@github.com:YourUserName/YourGem.git. </code>
-<code> cd YourGem </code>
-<code> gem install YourGem </code><br>
+<code> git clone git@github.com:YourUserName/YourGem.git. </code>\n
+<code> cd YourGem </code>\n
+<code> gem install YourGem </code><br>\n
+  
+  Command Line
+  Call it with <code>YourGem</code>
 
 ## Development/Contribution
 
