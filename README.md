@@ -1,40 +1,47 @@
-# Gemify
+# Gem It
 
 ## Description
 
-Add a short description of your app.
-
-## Screenshots
-
-Add some spiffy screenshots of your app here.
+Gem It is a web app that users can enter a url and make mini scraping gem with its content.
 
 ## Background
 
-Why did you want to make this app? What was your development process
-like?
+This app was made with Ruby Developers in mind. Having had the frustration of wanting snippets of information from a website and not wanting to make a scraper to simply retrieve the information we decided we needed a better way.
 
 ## Features
-
-Bullet point some of the key features of your app here.
+- Grab text, links, or and media paths from a website
+- Said information is pacakaged into an easy to use gem.
+- Gem It can now retieve any computed CSS on the website of your choice!
 
 ## Usage
+How to use [Gem It](http://gemit.us/)
+  1. Sign in with Github so we can set up a repo.
+  </a><br>
+  2. Submit the URL you want us to scrape from.<br>
+  3. Click however many targets on that page you want.<br>
+  4. Fill out some details.<br>
 
-How do users use your app?
+<b>How to use one of our gems</b><br>
+  Run these commands in your terminal to will install your gem.<br>
+<code> git clone git@github.com:YourUserName/YourGem.git. </code>
+</br>
+<code> cd YourGem </code>
+</br>
+<code> gem install YourGem </code><br>
 
 ## Development/Contribution
 
-Explain how people can contribute to your app. How should they write tests?
-Any things in particular you'd like to see in pull requests?
+Have a problem with the website? Want a new feature? Leave an issue or Fork Us!
 
 ## Future
 
-What features are you currently working on? Only mention things that you
-actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
+Currently, we're working on allowing users to grab information from multiple websites with one gem.
+If you have any suggestion please let us know!
 
 ## Author
 
-Link to your blog, twitter, etc!
+Our gems are cut with love by [Tristan](https://github.com/TSiege), [George](https://github.com/georgemayer), and [Patrick](https://github.com/patrickwhitrock).
 
 ## License
 
-My Spiffy App is MIT Licensed. See LICENSE for details.
+Gem It is MIT Licensed. Use any or all of it as you see fit.
