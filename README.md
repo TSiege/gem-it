@@ -14,9 +14,8 @@ This app was made with Ruby Developers in mind. Having had the frustration of wa
 - Gem It can now retieve any computed CSS on the website of your choice!
 
 ## Usage
-How to use [Gem It](http://gemit.us/)
+<b>How to use [Gem It](http://gemit.us/)</b>
   1. Sign in with Github so we can set up a repo.
-  </a><br>
   2. Submit the URL you want us to scrape from.<br>
   3. Click however many targets on that page you want.<br>
   4. Fill out some details.<br>
@@ -24,9 +23,7 @@ How to use [Gem It](http://gemit.us/)
 <b>How to use one of our gems</b><br>
   Run these commands in your terminal to will install your gem.<br>
 <code> git clone git@github.com:YourUserName/YourGem.git. </code>
-</br>
 <code> cd YourGem </code>
-</br>
 <code> gem install YourGem </code><br>
 
 ## Development/Contribution
