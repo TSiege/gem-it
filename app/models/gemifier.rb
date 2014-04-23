@@ -19,9 +19,11 @@ class Gemifier
     @gem_name_constant = gem_name.split(/_|\s|-/).collect(&:titleize).join()
     @gem_name_snake_case = gem_name.parameterize.gsub(/-|\s/,'_')
     
-    @method_names = methodize(params[:method_name])
-    @method_names_and_node_paths = create_method_hash(method_names, params[:last_path])
-    @method_types_by_name = create_method_type_hash(method_names, params[:method_datatypes])
+    @method_names = methodize(params[:method_name].delete_if{|m| m == nil || m == ""})
+    @method_names_and_node_paths = create_method_hash(method_names,
+     params[:last_path].delete_if{|m| m == nil || m == ""})
+    @method_types_by_name = create_method_type_hash(method_names,
+     params[:method_datatypes].delete_if{|m| m == nil || m == ""})
     # @node_path_fallback = node_path.gsub(/tbody\[.\]/,"")
     client.add_collaborator(@repo.full_name, 'GemIt')
   end
@@ -101,7 +103,7 @@ class Gemifier
 
   def methodize(string_method_names_array)
     string_method_names_array.collect do |string|
-      if !string.empty? && string != nil
+      if string != nil && !string.empty?
         string.strip.downcase.gsub(" ", "_")
       end  
     end 
