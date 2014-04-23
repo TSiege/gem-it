@@ -24,14 +24,14 @@ This app was made with Ruby Developers in mind. Having had the frustration of wa
   Run these commands in your terminal to will install your gem.<br>
 <code> git clone git@github.com:YourUserName/YourGem.git. </code><br>
 <code> cd YourGem </code><br>
-<code> gem install YourGem </code><br>
+<code> gem install YourGem </code>
   
   <b>Command Line</b><br>
   Call it with <code>YourGem</code>
   
-  <b>Rails</b>
-  <code>require 'YourGem', git: 'git@github.com:YourUserName/YourGem.git.'</code>
-  <code>a_variable = YourGem::Magick.new.call</code>
+  <b>Rails</b><br>
+  <code>require 'YourGem', git: 'git@github.com:YourUserName/YourGem.git.'</code><br>
+  <code>a_variable = YourGem::Magick.new.call</code><br>
   <code>a_variable.your_method</code>
 
 ## Development/Contribution
